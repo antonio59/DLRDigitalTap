@@ -31,7 +31,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {renderPage()}
-      <Footer onNavigate={setCurrentPage} />
     </div>
   )
 }
