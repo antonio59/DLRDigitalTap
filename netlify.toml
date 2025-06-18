@@ -1,0 +1,9 @@
+# Netlify configuration for Next.js project
+
+[build]
+  command = "pnpm run build"
+  publish = ".next"
+
+# Use the official Netlify plugin for Next.js to enable SSR/ISR support
+[[plugins]]
+  package = "@netlify/next"
