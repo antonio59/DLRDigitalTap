@@ -1,8 +1,13 @@
 "use client";
 
 import AboutPage from "@/components/about-page";
+import { useRouter } from "next/navigation";
 
 export default function About() {
-  // Standalone route wrapper – navigation callbacks are no-ops in this context
-  return <AboutPage onNavigate={() => {}} />;
+  const router = useRouter();
+  const handleNavigate = (page: string) => {
+    if (page === "home") router.push("/");
+    else router.push(`/${page}`);
+  };
+  return <AboutPage onNavigate={handleNavigate} />;
 }
