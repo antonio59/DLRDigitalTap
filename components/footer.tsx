@@ -44,6 +44,12 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </button>
               </li>
               <li>
+                <a href="/terms" className="text-gray-300 hover:text-white transition-colors">Terms</a>
+              </li>
+              <li>
+                <a href="/privacy" className="text-gray-300 hover:text-white transition-colors">Privacy</a>
+              </li>
+              <li>
                 <button onClick={() => onNavigate("vote")} className="text-gray-300 hover:text-white transition-colors">
                   Vote
                 </button>
