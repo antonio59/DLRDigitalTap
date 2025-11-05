@@ -60,47 +60,49 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 bg-gradient-to-br from-blue-50 to-indigo-100 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-            <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-              <div className="sm:text-center lg:text-left">
-                <Badge className="bg-orange-500 text-white mb-4">Campaign Concept</Badge>
-                <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                  <span className="block xl:inline">Help Us Bring</span>{" "}
-                  <span className="block text-blue-600 xl:inline">Digital Tap to the DLR</span>
-                </h1>
-                <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  This is a <span className="font-semibold text-gray-700">citizen-led campaign</span> proposing seamless, contactless travel technology for the DLR network. 
-                  See how it could work and support the idea.
-                </p>
-                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start gap-3">
-                  <VoteButton />
-                  <div className="mt-3 sm:mt-0">
-                    <Button
-                      onClick={() => onNavigate("prototype")}
-                      variant="outline"
-                      className="w-full flex items-center justify-center px-8 py-3 border-2 border-blue-600 text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10"
-                    >
-                      See How It Could Work
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </div>
-                </div>
-                <p className="mt-4 text-sm text-gray-500 italic">
-                  <AlertTriangle className="inline h-4 w-4 mr-1" />
-                  This is a demonstration concept, not a real working system
-                </p>
-              </div>
-            </main>
+      <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
+        {/* Decorative background pattern */}
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32">
+          <div className="text-center lg:text-left lg:max-w-3xl">
+            <Badge className="bg-orange-500 text-white mb-6 text-sm px-4 py-1.5">
+              Campaign Concept
+            </Badge>
+            <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <span className="block">Help Us Bring</span>
+              <span className="block text-blue-200 mt-2">Digital Tap to the DLR</span>
+            </h1>
+            <p className="mt-6 text-lg sm:text-xl text-blue-100 max-w-2xl lg:max-w-3xl">
+              This is a <span className="font-semibold text-white">citizen-led campaign</span> proposing seamless, 
+              contactless travel technology for the DLR network. See how it could work and support the idea.
+            </p>
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <VoteButton />
+              <Button
+                onClick={() => onNavigate("prototype")}
+                variant="outline"
+                className="flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white/10 md:py-4 md:text-lg md:px-10"
+              >
+                See How It Could Work
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+            <div className="mt-6 flex items-center justify-center lg:justify-start">
+              <AlertTriangle className="h-5 w-5 text-yellow-300 mr-2" />
+              <p className="text-sm text-blue-200 italic">
+                This is a demonstration concept, not a real working system
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-          <img
-            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-            src="/placeholder.svg?height=600&width=800"
-            alt="Modern DLR station with digital technology"
-          />
+          
+          {/* Decorative elements */}
+          <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-1/3">
+            <div className="relative">
+              <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 blur-3xl"></div>
+              <div className="absolute inset-0 bg-indigo-400 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+            </div>
+          </div>
         </div>
       </div>
 

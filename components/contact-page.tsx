@@ -8,10 +8,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { ArrowLeft, Mail, Send, Loader2 } from "lucide-react"
+import { Mail, Send, Loader2, MessageSquare } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import VoteButton from "./vote-button"
 import { sendContactEmail } from "@/actions/email"
+import PrototypeBanner from "./prototype-banner"
+import SiteFooter from "./site-footer"
 
 interface ContactPageProps {
   onNavigate: (page: string) => void
@@ -91,62 +92,21 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Button
-                variant="ghost"
-                onClick={() => onNavigate("home")}
-                className="flex items-center text-gray-600 hover:text-gray-900"
-              >
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Home
-              </Button>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <button
-                  onClick={() => onNavigate("home")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => onNavigate("about")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  About
-                </button>
-                <button
-                  onClick={() => onNavigate("vote")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Vote
-                </button>
-                <button
-                  onClick={() => onNavigate("contact")}
-                  className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Contact
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h1>
-          <p className="text-xl text-gray-600 mb-6">
-            Have questions or feedback about DLR Digital Tap? We'd love to hear from you.
+    <div className="min-h-screen bg-white flex flex-col">
+      <PrototypeBanner />
+      
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <MessageSquare className="h-16 w-16 mx-auto mb-4" />
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
+          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            Have questions, feedback, or suggestions about DLR Digital Tap? We'd love to hear from you.
           </p>
-          <VoteButton />
         </div>
+      </div>
+
+      <div className="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
 
         {/* Contact Form */}
         <Card>
@@ -228,20 +188,44 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
         </Card>
 
         {/* Additional Info */}
-        <Card className="mt-8 bg-blue-50 border-blue-200">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Why Contact Us?</h3>
-            <ul className="space-y-2 text-gray-600">
-              <li>• Share your experience with the current DLR system</li>
-              <li>• Suggest improvements for the Digital Tap concept</li>
-              <li>• Report issues with the prototype</li>
-              <li>• Ask questions about the technology</li>
-              <li>• Express interest in supporting the project</li>
-              <li>• Media inquiries and partnership opportunities</li>
-            </ul>
-          </CardContent>
-        </Card>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="bg-blue-50 border-blue-200">
+            <CardHeader>
+              <CardTitle className="text-blue-900">Why Contact Us?</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Share your experience with the current DLR system</li>
+                <li>• Suggest improvements for the Digital Tap concept</li>
+                <li>• Report issues with the prototype</li>
+                <li>• Ask questions about the technology</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-green-50 border-green-200">
+            <CardHeader>
+              <CardTitle className="text-green-900">Partnership & Media</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Express interest in supporting the project</li>
+                <li>• Media inquiries and interviews</li>
+                <li>• Partnership opportunities</li>
+                <li>• Technical collaboration</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-8 text-center text-sm text-gray-500">
+          <p>
+            We typically respond within 24-48 hours. For urgent matters, please mention it in your subject line.
+          </p>
+        </div>
       </div>
+
+      <SiteFooter />
     </div>
   )
 }
