@@ -572,7 +572,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                 <div className="mb-4">
                   <MessageSquare className="h-10 w-10 text-purple-600" />
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">"Traveling with luggage..."</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">"Travelling with luggage..."</h4>
                 <p className="text-gray-600 italic mb-4">
                   "Wheeling a suitcase while trying to tap out is awkward and slows everyone down. 
                   Automatic detection would speed up station flow for everyone."
