@@ -1,10 +1,13 @@
 "use server"
 
 import { supabase } from "@/lib/supabase"
+import { randomBytes } from "crypto"
 
-// Helper to generate user ID
+// Helper to generate secure user ID using cryptographically secure randomness
 function generateUserId() {
-  return `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+  const timestamp = Date.now()
+  const randomPart = randomBytes(9).toString('base64url').substring(0, 9)
+  return `user_${timestamp}_${randomPart}`
 }
 
 // Helper to get user ID from cookies or generate new one
@@ -93,9 +96,10 @@ export async function submitComment(formData: FormData) {
     // Handle image upload if present
     if (image && image.size > 0) {
       const fileExt = image.name.split(".").pop()
-      const fileName = `${Date.now()}_${Math.random().toString(36).substr(2, 9)}.${fileExt}`
+      const randomPart = randomBytes(12).toString('base64url').substring(0, 12)
+      const fileName = `${Date.now()}_${randomPart}.${fileExt}`
 
-      const { data: uploadData, error: uploadError } = await supabase.storage.from("image").upload(fileName, image)
+      const { error: uploadError } = await supabase.storage.from("image").upload(fileName, image)
 
       if (uploadError) {
         console.error("Error uploading image:", uploadError)
