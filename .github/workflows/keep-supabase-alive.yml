@@ -1,0 +1,89 @@
+name: Keep Supabase Alive
+
+# Runs every 7 days to prevent Supabase from going inactive (90-day timeout)
+on:
+  schedule:
+    # Runs at 3:00 AM UTC every Sunday
+    - cron: '0 3 * * 0'
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  ping-database:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install @supabase/supabase-js
+
+      - name: Ping Supabase Database
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          node << 'EOF'
+          const { createClient } = require('@supabase/supabase-js');
+          
+          const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+          const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+          
+          if (!supabaseUrl || !supabaseKey) {
+            console.error('❌ Missing Supabase credentials in secrets');
+            process.exit(1);
+          }
+          
+          const supabase = createClient(supabaseUrl, supabaseKey);
+          
+          async function keepAlive() {
+            try {
+              // Perform a simple query to keep database active
+              const { data, error } = await supabase
+                .from('votes')
+                .select('count')
+                .limit(1);
+              
+              if (error) {
+                console.error('❌ Database query failed:', error);
+                process.exit(1);
+              }
+              
+              console.log('✅ Supabase database pinged successfully');
+              console.log('📊 Keep-alive check completed at:', new Date().toISOString());
+              
+              // Also check analytics table
+              const { data: analyticsData, error: analyticsError } = await supabase
+                .from('analytics')
+                .select('count')
+                .limit(1);
+              
+              if (analyticsError) {
+                console.warn('⚠️  Analytics table check failed:', analyticsError);
+              } else {
+                console.log('✅ Analytics table is active');
+              }
+              
+            } catch (err) {
+              console.error('❌ Unexpected error:', err);
+              process.exit(1);
+            }
+          }
+          
+          keepAlive();
+          EOF
+
+      - name: Report Status
+        if: always()
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "✅ Supabase keep-alive successful"
+          else
+            echo "❌ Supabase keep-alive failed - check logs"
+            exit 1
+          fi
