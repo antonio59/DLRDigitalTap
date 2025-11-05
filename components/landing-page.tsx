@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Smartphone, Clock, Users, Shield, TrendingUp, UserCheck, AlertTriangle, CheckCircle2, XCircle, Lightbulb, Target, MessageSquare } from "lucide-react"
 import VoteButton from "./vote-button"
