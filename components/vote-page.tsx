@@ -9,9 +9,11 @@ import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ArrowLeft, Heart, MessageCircle, Calendar, Users, Target, TrendingUp, Upload, X } from "lucide-react"
+import { ArrowLeft, Heart, MessageCircle, Calendar, Users, Target, TrendingUp, Upload, X, Share2, Mail } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import VoteButton from "./vote-button"
+import PrototypeBanner from "./prototype-banner"
+import DisclaimerFooter from "./disclaimer-footer"
 import { getComments, submitComment, getTotalVotes } from "@/actions/database"
 
 interface VotePageProps {
@@ -164,6 +166,7 @@ export default function VotePage({ onNavigate }: VotePageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <PrototypeBanner />
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -271,6 +274,61 @@ export default function VotePage({ onNavigate }: VotePageProps) {
             <div className="flex justify-between text-xs text-gray-500 mt-1">
               <span>{voteCount.toLocaleString()} votes</span>
               <span>2,000 goal</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Share Section */}
+        <Card className="mb-8 border-2 border-purple-200 bg-purple-50">
+          <CardContent className="p-6">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center justify-center">
+                <Share2 className="h-5 w-5 mr-2 text-purple-600" />
+                Help Spread the Word
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Share this campaign with fellow DLR passengers and help us reach our goal faster!
+              </p>
+              <div className="flex justify-center gap-3 flex-wrap">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    const url = window.location.href
+                    const text = "Help bring digital tap technology to the DLR! Vote for this campaign to make our journeys easier and more accessible."
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank')
+                  }}
+                  className="bg-white"
+                >
+                  <Share2 className="h-4 w-4 mr-2" />
+                  Share on Twitter
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    const url = window.location.href
+                    const subject = "Support DLR Digital Tap Campaign"
+                    const body = `I just voted for the DLR Digital Tap campaign!\n\nThis citizen-led proposal would bring automatic digital tap technology to the DLR, making journeys easier, more accessible, and more convenient for everyone.\n\nCheck it out and vote: ${url}\n\nEvery vote helps us reach our goal of 2,000 supporters to present this to TfL.`
+                    window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+                  }}
+                  className="bg-white"
+                >
+                  <Mail className="h-4 w-4 mr-2" />
+                  Share via Email
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href)
+                    toast({
+                      title: "Link copied!",
+                      description: "Campaign link copied to clipboard",
+                    })
+                  }}
+                  className="bg-white"
+                >
+                  Copy Link
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -436,6 +494,8 @@ export default function VotePage({ onNavigate }: VotePageProps) {
           </CardContent>
         </Card>
       </div>
+
+      <DisclaimerFooter />
     </div>
   )
 }

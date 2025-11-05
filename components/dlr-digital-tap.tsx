@@ -4,9 +4,12 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowLeft, MapPin, CreditCard, CheckCircle, Train, Smartphone } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { ArrowLeft, MapPin, CreditCard, CheckCircle, Train, Smartphone, AlertTriangle } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { trackAnalytics } from "@/actions/database"
+import PrototypeBanner from "./prototype-banner"
+import DisclaimerFooter from "./disclaimer-footer"
 
 interface DLRDigitalTapProps {
   onBackClick: () => void
@@ -162,6 +165,7 @@ export default function DLRDigitalTap({ onBackClick }: DLRDigitalTapProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <PrototypeBanner />
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -174,7 +178,13 @@ export default function DLRDigitalTap({ onBackClick }: DLRDigitalTapProps) {
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Home
             </Button>
-            <h1 className="text-xl font-semibold text-gray-900">DLR Digital Tap Prototype</h1>
+            <div className="text-center">
+              <h1 className="text-xl font-semibold text-gray-900">DLR Digital Tap Prototype</h1>
+              <Badge variant="outline" className="mt-1 text-orange-600 border-orange-600">
+                <AlertTriangle className="h-3 w-3 mr-1" />
+                CONCEPT DEMO
+              </Badge>
+            </div>
             <div className="w-24" /> {/* Spacer for centering */}
           </div>
         </div>
@@ -474,7 +484,26 @@ export default function DLRDigitalTap({ onBackClick }: DLRDigitalTapProps) {
             </div>
           </CardContent>
         </Card>
+
+        {/* Disclaimer */}
+        <Card className="mt-8 border-2 border-orange-200 bg-orange-50">
+          <CardContent className="p-6">
+            <div className="flex items-start space-x-3">
+              <AlertTriangle className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-gray-700">
+                <p className="font-semibold text-orange-900 mb-2">Demonstration Only</p>
+                <p>
+                  This is a working prototype demonstration of how digital tap could function. 
+                  No real journey or payment is being processed. The fares shown are simulated for illustration purposes only.
+                  This is not an official TfL service.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
+
+      <DisclaimerFooter />
     </div>
   )
 }
