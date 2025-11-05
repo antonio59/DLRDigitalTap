@@ -60,7 +60,7 @@ export default function Terms() {
             <li>Content you submit (feedback, votes, images) is stored temporarily for demonstration purposes</li>
             <li>All submitted content may be deleted, modified, or removed at any time without notice</li>
             <li>Do not submit sensitive, confidential, or personal information beyond basic contact details</li>
-            <li>You retain ownership of content you submit, but grant us a license to use it for demonstration and improvement purposes</li>
+            <li>You retain ownership of content you submit, but grant us a licence to use it for demonstration and improvement purposes</li>
           </ul>
 
           <h2 className="text-2xl font-bold mt-8 mb-4">5. Acceptable Use</h2>

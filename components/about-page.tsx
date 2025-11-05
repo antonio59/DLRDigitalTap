@@ -82,9 +82,14 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           <CardContent className="p-6">
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                This campaign began in early 2024 after one particularly frustrating morning commute. After missing my train 
-                for the third consecutive day due to tap point queues at a busy DLR station, I realized this wasn't just my problem—it 
-                affects thousands of passengers daily.
+                This campaign began at Royal Victoria DLR station. I was already running late when I saw the queue spilling out 
+                past the ticket barriers. One of the tap points was out of order—again—and the remaining two were struggling under 
+                the weight of rush hour pressure.
+              </p>
+              <p>
+                I watched the minutes tick by. The train I needed pulled in. I was still ten people back from the barrier. The 
+                doors closed. The train left. For the third day in a row, I'd missed it—not because I was late, but because the 
+                system couldn't keep up. That's when I realised this wasn't just my problem—it affects thousands of passengers daily.
               </p>
               <p>
                 Instead of just complaining like everyone else, I decided to do something about it. As a software developer, 

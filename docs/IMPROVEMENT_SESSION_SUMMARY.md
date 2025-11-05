@@ -97,7 +97,7 @@ pnpm audit
 ```bash
 pnpm lint
 ```
-**Result:** ✅ Passes with 3 warnings (image optimization suggestions)
+**Result:** ✅ Passes with 3 warnings (image optimisation suggestions)
 
 ### Build
 ```bash
@@ -106,7 +106,7 @@ pnpm build
 **Result:** ✅ Successfully builds
 - All pages compile successfully
 - Static generation working correctly
-- Bundle sizes optimized
+- Bundle sizes optimised
 
 ### CI/CD
 **Result:** ✅ All workflows passing
@@ -197,7 +197,7 @@ This approach:
 
 2. **ESLint Compatibility**: eslint-config-next version must match ESLint major version (v16 requires ESLint 9, v14 works with ESLint 8).
 
-3. **Security First**: Critical security updates should be prioritized and committed separately before other improvements.
+3. **Security First**: Critical security updates should be prioritised and committed separately before other improvements.
 
 4. **Documentation**: Comprehensive documentation during the improvement process helps with future maintenance.
 
