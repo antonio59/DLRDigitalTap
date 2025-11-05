@@ -17,9 +17,9 @@ export async function sendContactEmail(formData: FormData) {
 
     const emailSubject = subject || "New Contact Form Submission"
 
-    const { data, error } = await resend.emails.send({
+    const { data, error} = await resend.emails.send({
       from: "DLR Digital Tap <contact@dlrdigitaltap.xyz>",
-      to: ["your-email@example.com"], // Replace with your email
+      to: ["your-email@example.com"], // TODO: Replace with your actual email address
       subject: emailSubject,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

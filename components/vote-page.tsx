@@ -410,7 +410,7 @@ export default function VotePage({ onNavigate }: VotePageProps) {
                   {imagePreview ? (
                     <div className="relative inline-block">
                       <img
-                        src={imagePreview || "/placeholder.svg"}
+                        src={imagePreview}
                         alt="Preview"
                         className="w-32 h-32 object-cover rounded-lg"
                       />

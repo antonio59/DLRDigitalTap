@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, User, Mail, Linkedin, Github, Heart, Rocket, Calendar, CheckCircle2, Clock, Target, HelpCircle, ArrowRight, Train } from "lucide-react"
+import { ArrowLeft, User, Mail, Heart, Rocket, Calendar, CheckCircle2, Clock, Target, HelpCircle, ArrowRight, Train } from "lucide-react"
 import VoteButton from "./vote-button"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"

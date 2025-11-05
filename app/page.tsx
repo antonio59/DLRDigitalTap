@@ -6,7 +6,6 @@ import DLRDigitalTap from "@/components/dlr-digital-tap"
 import VotePage from "@/components/vote-page"
 import AboutPage from "@/components/about-page"
 import ContactPage from "@/components/contact-page"
-import Footer from "@/components/footer"
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("home")
