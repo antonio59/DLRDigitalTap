@@ -1,0 +1,224 @@
+{
+  "name": "DLR Digital Tap - Monthly Campaign Updates",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 1 * *"
+            }
+          ]
+        }
+      },
+      "name": "Monthly Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300],
+      "notes": "Triggers on the 1st of every month at 9:00 AM GMT"
+    },
+    {
+      "parameters": {
+        "url": "https://dlrdigitaltap.netlify.app/api/stats",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "options": {}
+      },
+      "name": "Fetch Campaign Stats",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [470, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "DLR Admin API Key"
+        }
+      },
+      "notes": "Fetches statistics from the DLR Digital Tap API"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "totalVotes",
+              "name": "totalVotes",
+              "value": "={{ $json.totalVotes }}",
+              "type": "number"
+            },
+            {
+              "id": "totalComments",
+              "name": "totalComments",
+              "value": "={{ $json.totalComments }}",
+              "type": "number"
+            },
+            {
+              "id": "daysSinceLaunch",
+              "name": "daysSinceLaunch",
+              "value": "={{ $json.daysSinceLaunch }}",
+              "type": "number"
+            },
+            {
+              "id": "postContent",
+              "name": "postContent",
+              "value": "=🚇 DLR Digital Tap Campaign Update\n\n📊 {{ $json.totalVotes.toLocaleString() }} people have voted for contactless, queue-free travel on the DLR!\n\n💬 {{ $json.totalComments }} comments from frustrated commuters sharing their experiences with broken tap points, rush hour queues, and missed trains.\n\n🎯 Day {{ $json.daysSinceLaunch }} of our ongoing campaign to bring modern travel technology to the DLR.\n\nEvery voice matters. Join the movement: https://dlrdigitaltap.netlify.app\n\n@TfL @MayorofLondon #DLR #London #PublicTransport #Innovation",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Format Post Content",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [690, 300],
+      "notes": "Formats the statistics into a social media post"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.postContent }}",
+        "additionalFields": {}
+      },
+      "name": "Post to Twitter",
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [910, 200],
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Twitter OAuth2 API"
+        }
+      },
+      "notes": "Posts the update to Twitter/X"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.postContent }}",
+        "additionalFields": {}
+      },
+      "name": "Post to LinkedIn",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [910, 400],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "LinkedIn OAuth2 API"
+        }
+      },
+      "notes": "Posts the update to LinkedIn"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "success",
+              "name": "success",
+              "value": "=true",
+              "type": "boolean"
+            },
+            {
+              "id": "timestamp",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "stats",
+              "name": "stats",
+              "value": "={{ $('Fetch Campaign Stats').item.json }}",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "name": "Log Success",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1130, 300],
+      "notes": "Logs successful execution for monitoring"
+    }
+  ],
+  "connections": {
+    "Monthly Schedule": {
+      "main": [
+        [
+          {
+            "node": "Fetch Campaign Stats",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Campaign Stats": {
+      "main": [
+        [
+          {
+            "node": "Format Post Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Post Content": {
+      "main": [
+        [
+          {
+            "node": "Post to Twitter",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Post to LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post to Twitter": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post to LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Log Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "id": "campaign",
+      "name": "Campaign"
+    },
+    {
+      "id": "social-media",
+      "name": "Social Media"
+    }
+  ],
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "your_instance_id"
+  }
+}

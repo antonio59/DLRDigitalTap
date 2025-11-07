@@ -224,7 +224,7 @@ export default function VotePage({ onNavigate }: VotePageProps) {
         </div>
 
         {/* Campaign Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <Card>
             <CardContent className="p-4 text-center">
               <Heart className="h-8 w-8 text-red-500 mx-auto mb-2" />
@@ -235,45 +235,30 @@ export default function VotePage({ onNavigate }: VotePageProps) {
 
           <Card>
             <CardContent className="p-4 text-center">
-              <Calendar className="h-8 w-8 text-blue-500 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">145</div>
-              <div className="text-sm text-gray-500">Days Remaining</div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4 text-center">
               <Users className="h-8 w-8 text-green-500 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">892</div>
-              <div className="text-sm text-gray-500">Supporters</div>
+              <div className="text-2xl font-bold text-gray-900">{comments.length}</div>
+              <div className="text-sm text-gray-500">Comments Shared</div>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-4 text-center">
-              <Target className="h-8 w-8 text-purple-500 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">2,000</div>
-              <div className="text-sm text-gray-500">Goal</div>
+              <TrendingUp className="h-8 w-8 text-cyan-500 mx-auto mb-2" />
+              <div className="text-2xl font-bold text-gray-900">Ongoing</div>
+              <div className="text-sm text-gray-500">Campaign Status</div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Progress Bar */}
-        <Card className="mb-8">
+        {/* Campaign Info */}
+        <Card className="mb-8 border-2 border-cyan-200 bg-cyan-50">
           <CardContent className="p-6">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium text-gray-700">Campaign Progress</span>
-              <span className="text-sm text-gray-500">{Math.round(progressPercentage)}% Complete</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
-              <div
-                className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-300"
-                style={{ width: `${progressPercentage}%` }}
-              ></div>
-            </div>
-            <div className="flex justify-between text-xs text-gray-500 mt-1">
-              <span>{voteCount.toLocaleString()} votes</span>
-              <span>2,000 goal</span>
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Ongoing Campaign</h3>
+              <p className="text-gray-700">
+                We engage with TfL regularly through social media, sharing your feedback and the growing support for Digital Tap. 
+                Your vote and comments help us demonstrate continued demand for this improvement to the DLR network.
+              </p>
             </div>
           </CardContent>
         </Card>
