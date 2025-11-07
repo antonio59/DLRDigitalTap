@@ -60,7 +60,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800">
+      <div className="relative overflow-hidden bg-gradient-to-br from-cyan-600 via-teal-700 to-blue-800">
         {/* Decorative background pattern */}
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px_32px]"></div>
         
@@ -71,9 +71,9 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             </Badge>
             <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="block">Help Us Bring</span>
-              <span className="block text-blue-200 mt-2">Digital Tap to the DLR</span>
+              <span className="block text-cyan-100 mt-2">Digital Tap to the DLR</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-blue-100 max-w-2xl lg:max-w-3xl">
+            <p className="mt-6 text-lg sm:text-xl text-cyan-50 max-w-2xl lg:max-w-3xl">
               This is a <span className="font-semibold text-white">citizen-led campaign</span> proposing seamless, 
               contactless travel technology for the DLR network. See how it could work and support the idea.
             </p>
@@ -90,7 +90,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             </div>
             <div className="mt-6 flex items-center justify-center lg:justify-start">
               <AlertTriangle className="h-5 w-5 text-yellow-300 mr-2" />
-              <p className="text-sm text-blue-200 italic">
+              <p className="text-sm text-cyan-100 italic">
                 This is a demonstration concept, not a real working system
               </p>
             </div>
@@ -99,8 +99,8 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           {/* Decorative elements */}
           <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-1/3">
             <div className="relative">
-              <div className="absolute inset-0 bg-blue-400 rounded-full opacity-20 blur-3xl"></div>
-              <div className="absolute inset-0 bg-indigo-400 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+              <div className="absolute inset-0 bg-teal-400 rounded-full opacity-20 blur-3xl"></div>
+              <div className="absolute inset-0 bg-cyan-400 rounded-full opacity-20 blur-3xl animate-pulse"></div>
             </div>
           </div>
         </div>
