@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, User, Mail, Heart, Rocket, Calendar, CheckCircle2, Clock, Target, HelpCircle, ArrowRight, Train } from "lucide-react"
+import { ArrowLeft, User, Mail, Heart, Rocket, Calendar, CheckCircle2, Clock, Target, HelpCircle, ArrowRight, Train, MessageCircle } from "lucide-react"
 import VoteButton from "./vote-button"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
@@ -180,27 +180,46 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-semibold text-gray-900">Phase 2: Gather Public Support</h4>
-                  <p className="text-sm text-blue-600 font-medium mb-2">🔄 In Progress - 1,458 of 2,000 votes (73%)</p>
+                  <h4 className="text-lg font-semibold text-gray-900">Phase 2: Gather Ongoing Support</h4>
+                  <p className="text-sm text-gray-500 font-medium mb-2">🔄 Active - Continuous</p>
                   <p className="text-gray-600">
-                    Collecting votes from DLR passengers to demonstrate public demand. Goal is 2,000 signatures to show 
-                    TfL there's genuine interest in digital tap technology.
+                    Collecting votes and feedback from DLR passengers to demonstrate sustained public demand. Rather than 
+                    a fixed target, we're building momentum through ongoing engagement, showing TfL there's genuine and 
+                    growing interest in digital tap technology.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center">
+                  <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center">
                     <Target className="h-6 w-6 text-white" />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-semibold text-gray-900">Phase 3: Present to TfL</h4>
-                  <p className="text-sm text-gray-500 font-medium mb-2">⏳ Planned - Q1 2025</p>
+                  <h4 className="text-lg font-semibold text-gray-900">Phase 3: Ongoing TfL Engagement</h4>
+                  <p className="text-sm text-gray-500 font-medium mb-2">🔄 Active - Continuous</p>
                   <p className="text-gray-600">
-                    Once we reach 2,000 votes, we'll compile all feedback and present a formal proposal to TfL leadership, 
-                    along with this prototype and supporting data from our community.
+                    We engage with TfL regularly through social media, sharing campaign statistics and passenger feedback. 
+                    Monthly automated posts highlight growing support and demonstrate sustained demand for this improvement. 
+                    Every vote and comment strengthens our case.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="h-10 w-10 rounded-full bg-cyan-600 flex items-center justify-center">
+                    <MessageCircle className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-semibold text-gray-900">Phase 4: Build Critical Mass</h4>
+                  <p className="text-sm text-gray-500 font-medium mb-2">🔄 Active - Ongoing</p>
+                  <p className="text-gray-600">
+                    Rather than a fixed deadline, we're building sustained momentum. As vote numbers grow and real passenger 
+                    stories accumulate, we'll compile compelling data packages for formal submission to TfL leadership, 
+                    media outlets, and local councillors.
                   </p>
                 </div>
               </div>
@@ -212,11 +231,12 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-semibold text-gray-900">Phase 4: Pilot Program</h4>
-                  <p className="text-sm text-gray-500 font-medium mb-2">⏳ Hopeful - 2025-2026</p>
+                  <h4 className="text-lg font-semibold text-gray-900">Phase 5: Advocate for Pilot Program</h4>
+                  <p className="text-sm text-gray-500 font-medium mb-2">⏳ Future - When Ready</p>
                   <p className="text-gray-600">
-                    If TfL shows interest, we'd advocate for a pilot program at 2-3 stations. This would test the 
-                    technology in real-world conditions and gather user feedback for refinement.
+                    With substantial public backing, we'll formally propose a pilot program at 2-3 high-traffic stations. 
+                    Real-world testing would provide data on passenger adoption, system reliability, and operational benefits 
+                    for TfL to evaluate.
                   </p>
                 </div>
               </div>
@@ -228,11 +248,12 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-semibold text-gray-900">Phase 5: Network-Wide Rollout</h4>
-                  <p className="text-sm text-gray-500 font-medium mb-2">⏳ Vision - Beyond 2026</p>
+                  <h4 className="text-lg font-semibold text-gray-900">Phase 6: Network-Wide Implementation</h4>
+                  <p className="text-sm text-gray-500 font-medium mb-2">⏳ Vision - Long-term Goal</p>
                   <p className="text-gray-600">
-                    The ultimate goal: digital tap available at all 45 DLR stations, with physical tap points maintained 
-                    as backup. Potential expansion to other TfL services based on success.
+                    The ultimate vision: digital tap available at all 45 DLR stations, with physical tap points maintained 
+                    permanently as backup. Success on the DLR could pave the way for expansion to other TfL services, 
+                    modernising London's entire public transport network.
                   </p>
                 </div>
               </div>
@@ -262,9 +283,10 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">Will this actually happen?</h4>
                 <p className="text-gray-600">
-                  That depends on public support and TfL's response. We're building a compelling case with vote numbers, 
-                  user feedback, and a working prototype. The more support we gather, the stronger our position when we 
-                  present to TfL. Many successful transport innovations started as citizen proposals.
+                  That depends on sustained public support and TfL's response. We're building a compelling case through 
+                  ongoing engagement, regular social media advocacy, growing vote numbers, and authentic passenger feedback. 
+                  The more support we gather over time, the stronger our position. Many successful transport innovations 
+                  started as citizen-led campaigns with persistent advocacy.
                 </p>
               </div>
 
