@@ -151,12 +151,13 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Daily DLR Commuter & Software Developer</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Daily DLR Commuter & Web Developer</h3>
                 <div className="space-y-3 text-gray-600 leading-relaxed">
                   <p>
-                    Hi, I'm a software developer based in South London who has been commuting on the DLR for several years. 
-                    My daily journey takes me through some of the busiest stations on the network, and I've experienced 
-                    firsthand the challenges of the current tap system.
+                    Hi, I'm Antonio Smith, a project manager and web developer based in East London who has been commuting on 
+                    the DLR for several years. My daily journey takes me through some of the busiest stations on the network—Poplar, 
+                    Canary Wharf, Tower Gateway—and I've experienced firsthand the challenges of the current tap system, from broken 
+                    validators to platform-hopping queues that make me miss crucial connections.
                   </p>
                   <p>
                     As someone who works with technology every day, I'm passionate about using it to solve real-world problems. 
@@ -165,8 +166,8 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   </p>
                   <p>
                     This isn't about replacing TfL's infrastructure—it's about enhancing it. Physical tap points would remain 
-                    as backup options, ensuring accessibility for everyone while giving tech-savvy passengers a faster, 
-                    more convenient alternative.
+                    fully operational for everyone, whilst giving passengers who choose to opt in a faster, contactless alternative 
+                    using their phones.
                   </p>
                   <p className="italic text-gray-500 text-sm mt-4">
                     Want to get in touch about the campaign or discuss collaboration? Feel free to reach out via the contact page.
