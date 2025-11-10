@@ -12,7 +12,6 @@ import { Mail, Send, Loader2, MessageSquare } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { sendContactEmail } from "@/actions/email"
 import PrototypeBanner from "./prototype-banner"
-import SiteFooter from "./site-footer"
 
 interface ContactPageProps {
   onNavigate: (page: string) => void
@@ -224,8 +223,6 @@ export default function ContactPage({ onNavigate }: ContactPageProps) {
           </p>
         </div>
       </div>
-
-      <SiteFooter />
     </div>
   )
 }
