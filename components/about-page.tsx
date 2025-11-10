@@ -82,24 +82,54 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           <CardContent className="p-6">
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                This campaign began at Royal Victoria DLR station. I was already running late when I saw the queue spilling out 
-                past the ticket barriers. One of the tap points was out of order—again—and the remaining two were struggling under 
-                the weight of rush hour pressure.
+                This campaign began at Poplar DLR station. I was already running late and both of the tap points were out of 
+                order—again—the only option was going to the other platform to try the other touch points there. The train I 
+                needed pulled in. I was on the wrong platform, rushing to get back. The doors closed. The train left—not because 
+                I was late, but because the system couldn't keep up.
               </p>
               <p>
-                I watched the minutes tick by. The train I needed pulled in. I was still ten people back from the barrier. The 
-                doors closed. The train left. For the third day in a row, I'd missed it—not because I was late, but because the 
-                system couldn't keep up. That's when I realised this wasn't just my problem—it affects thousands of passengers daily.
+                Whilst we're fortunate to have frequent DLR services, I have to catch a connecting train at Tower Hill, and DLR 
+                services to Tower Gateway aren't as frequent as those to Bank—so timing matters. Missing one train doesn't just 
+                mean waiting a few minutes; it means missing my connection and adding 15-30 minutes to my journey depending on 
+                the time of day.
               </p>
               <p>
-                Instead of just complaining like everyone else, I decided to do something about it. As a software developer, 
-                I knew the technology to solve this problem already exists. Airports use automatic check-in, museums use proximity 
+                That's when I realised this wasn't just my problem—it affects thousands of passengers daily. Many stations or 
+                platforms only have a single touchpoint per platform, or two maximum. If one of those is out of service, or 
+                during rush hour, you're queuing for what feels like forever. And if there are users arriving and departing at 
+                the same time, it becomes a juggle as you try to let those trying to catch the next train tap in before you—an 
+                awkward dance of "no, you go first" whilst you wait to leave the station.
+              </p>
+              <p className="font-semibold text-gray-700">
+                But the frustrations don't end there.
+              </p>
+              <p>
+                I was at Heron Quays DLR the other day. I get that some stations don't have barriers. But at this station, 
+                the validators aren't anywhere near where you'd see them in your eye line, or close to the stairs. I travel a 
+                lot around London and was completely baffled by this station—it's as if they've intentionally hidden the tap 
+                points so people don't pay. How many passengers miss them entirely? How much revenue is Transport for London 
+                losing simply because of poor placement?
+              </p>
+              <p>
+                Then there's the uncertainty. Did my tap register? The readers often lag, giving no immediate feedback. You 
+                tap, wait, see nothing, tap again—and suddenly you've double-charged yourself or, worse, invalidated your 
+                journey. There's no reassurance, no confirmation sound that works consistently, no clear display. You're left 
+                hoping for the best and dreading the penalty fare.
+              </p>
+              <p>
+                The broken infrastructure is relentless. One week it's Poplar. The next it's Westferry. Then Pontoon Dock. 
+                The validators rotate through a cycle of dysfunction like some kind of perverse rota. You start planning your 
+                route not around which train is fastest, but around which stations might actually let you tap in today.
+              </p>
+              <p>
+                Instead of just complaining like everyone else, I decided to do something about it. As a web developer, I 
+                knew the technology to solve this problem already exists. Airports use automatic check-in, museums use proximity 
                 detection, and retail stores use beacon technology. Why not public transport?
               </p>
               <p>
                 So I built this prototype in my spare time to demonstrate what's possible. What started as a weekend project 
-                has grown into a movement with <span className="font-semibold text-gray-900">over 1,458 supporters</span> who 
-                share the same frustrations and believe in a better future for DLR travel.
+                has grown into a movement with so many supporters who share the same frustrations and believe in a better future 
+                for DLR travel.
               </p>
             </div>
           </CardContent>
@@ -342,9 +372,10 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">When will you present this to TfL?</h4>
                 <p className="text-gray-600">
-                  We're targeting Q1 2025, once we reach our goal of 2,000 votes. This gives us enough time to gather 
-                  comprehensive feedback and prepare a professional presentation with all supporting data. We'll keep 
-                  supporters updated on progress.
+                  We engage with TfL continuously through monthly social media posts and ongoing advocacy. Rather than waiting 
+                  for a fixed target, we're building sustained momentum and compiling data packages as support grows. When we have 
+                  substantial backing and compelling evidence, we'll pursue formal meetings with TfL leadership and present our case 
+                  for a pilot programme.
                 </p>
               </div>
             </div>
@@ -368,35 +399,36 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 <li className="flex items-start">
                   <CheckCircle2 className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold">Regular Updates:</span> As we approach our 2,000 vote goal, 
-                    I'll share progress updates and any developments with TfL.
+                    <span className="font-semibold">Monthly TfL Engagement:</span> We post regular updates to TfL on social 
+                    media, sharing growing vote counts and passenger feedback to maintain visibility.
                   </div>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold">TfL Presentation:</span> Once we reach 2,000 votes, we'll compile 
-                    all feedback and schedule a formal presentation with TfL leadership.
+                    <span className="font-semibold">Data Compilation:</span> As support grows, we compile comprehensive data 
+                    packages with statistics, passenger stories, and usage patterns to present to TfL, media, and councillors.
                   </div>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="font-semibold">Community Feedback:</span> Your comments and suggestions help strengthen 
-                    our proposal. We're listening and incorporating feedback into our pitch.
+                    our proposal. We're listening and incorporating feedback into our ongoing advocacy.
                   </div>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="h-5 w-5 text-purple-600 mr-2 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold">Transparency:</span> Whether TfL accepts, rejects, or wants modifications, 
-                    we'll share their response with all supporters.
+                    <span className="font-semibold">Transparency:</span> Whether TfL engages positively or needs more convincing, 
+                    we'll share developments with all supporters and keep the campaign momentum going.
                   </div>
                 </li>
               </ul>
               <p className="mt-4 italic">
-                This is a long-term campaign. Even if TfL isn't ready now, public support helps demonstrate demand 
-                for future consideration. Every vote makes a difference.
+                This is a long-term, sustained campaign. Persistent advocacy and growing public support demonstrate genuine 
+                demand. Even if change doesn't happen immediately, every vote strengthens our case and keeps digital tap on 
+                TfL's radar for future consideration.
               </p>
             </div>
           </CardContent>

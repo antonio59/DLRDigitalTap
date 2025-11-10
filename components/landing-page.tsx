@@ -809,7 +809,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             <span className="block">Support This Campaign</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-blue-100">
-            Help us reach 2,000 votes to present this proposal to TfL. Every vote matters.
+            Join our ongoing campaign to bring digital tap to the DLR. Every vote matters and strengthens our case to TfL.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <VoteButton />

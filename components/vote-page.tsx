@@ -292,7 +292,7 @@ export default function VotePage({ onNavigate }: VotePageProps) {
                   onClick={() => {
                     const url = window.location.href
                     const subject = "Support DLR Digital Tap Campaign"
-                    const body = `I just voted for the DLR Digital Tap campaign!\n\nThis citizen-led proposal would bring automatic digital tap technology to the DLR, making journeys easier, more accessible, and more convenient for everyone.\n\nCheck it out and vote: ${url}\n\nEvery vote helps us reach our goal of 2,000 supporters to present this to TfL.`
+                    const body = `I just voted for the DLR Digital Tap campaign!\n\nThis citizen-led proposal would bring automatic digital tap technology to the DLR, making journeys easier, more accessible, and more convenient for everyone.\n\nCheck it out and vote: ${url}\n\nEvery vote strengthens our ongoing campaign and shows TfL there's genuine demand for this improvement.`
                     window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
                   }}
                   className="bg-white"
@@ -340,15 +340,15 @@ export default function VotePage({ onNavigate }: VotePageProps) {
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2">What Happens Next?</h3>
                 <p className="text-gray-600">
-                  Once we reach our goal of 2,000 votes, we'll present this campaign to TfL leadership along with
-                  detailed proposals and user feedback. Every vote counts towards making this vision a reality.
+                  We engage with TfL regularly through social media, sharing growing support and passenger feedback. 
+                  Your vote and comments help demonstrate real demand for this improvement to the DLR network.
                 </p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2">Timeline</h3>
                 <p className="text-gray-600">
-                  We have 145 days remaining in our campaign. Regular updates will be shared with supporters about our
+                  This is an ongoing campaign with regular monthly updates shared via social media about our
                   progress and any developments with TfL.
                 </p>
               </div>
