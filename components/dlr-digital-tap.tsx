@@ -126,8 +126,8 @@ export default function DLRDigitalTap({ onBackClick }: DLRDigitalTapProps) {
     // Calculate fare based on journey (simplified calculation)
     const baseFare = 2.8
     // Use deterministic calculation based on stations instead of random
-    const stationIndex1 = dlrStations.indexOf(fromStation)
-    const stationIndex2 = dlrStations.indexOf(toStation)
+    const stationIndex1 = DLR_STATIONS.indexOf(fromStation)
+    const stationIndex2 = DLR_STATIONS.indexOf(toStation)
     const distance = Math.abs(stationIndex2 - stationIndex1)
     const distanceFactor = Math.min(distance * 0.5 + 1, 3) // 1-3x multiplier based on distance
     const calculatedFare = Math.round(baseFare * distanceFactor * 100) / 100
