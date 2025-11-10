@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -79,14 +80,15 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <VoteButton />
-              <Button
-                onClick={() => onNavigate("prototype")}
-                variant="outline"
-                className="flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white/10 md:py-4 md:text-lg md:px-10"
-              >
-                See How It Could Work
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link href="/prototype">
+                <Button
+                  variant="outline"
+                  className="flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white/10 md:py-4 md:text-lg md:px-10"
+                >
+                  See How It Could Work
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
             <div className="mt-6 flex items-center justify-center lg:justify-start">
               <AlertTriangle className="h-5 w-5 text-yellow-300 mr-2" />
@@ -813,14 +815,15 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <VoteButton />
-            <Button
-              onClick={() => onNavigate("prototype")}
-              variant="outline"
-              className="inline-flex items-center justify-center px-5 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white hover:text-blue-600"
-            >
-              See the Demo
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link href="/prototype">
+              <Button
+                variant="outline"
+                className="inline-flex items-center justify-center px-5 py-3 border-2 border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white hover:text-blue-600"
+              >
+                See the Demo
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
           <p className="mt-6 text-sm text-blue-200">
             <AlertTriangle className="inline h-4 w-4 mr-1" />
