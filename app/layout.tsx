@@ -67,6 +67,7 @@ export const metadata: Metadata = {
       "Experience the future of DLR travel with our innovative digital tap system. No more crowded tap points, just seamless contactless journeys.",
     images: ["/twitter-image.png"],
     creator: "@dlrdigitaltap",
+    site: "@dlrdigitaltap",
   },
   robots: {
     index: true,

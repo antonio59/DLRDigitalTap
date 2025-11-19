@@ -9,6 +9,7 @@ import VoteButton from "./vote-button"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
 import SiteHeader from "./site-header"
+import SocialFeed from "./social-feed"
 
 export default function LandingPage() {
   return (
@@ -422,50 +423,69 @@ export default function LandingPage() {
       {/* TfL Integration Section */}
       <div className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:text-center">
-            <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Integration</h2>
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Seamless TfL Network Integration
-            </p>
-            <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Our digital tap system integrates seamlessly with existing TfL infrastructure, supporting both Oyster
-              cards and contactless payments.
-            </p>
-          </div>
-
-          <div className="mt-10">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mx-auto">
-                  <Badge className="bg-blue-500">1</Badge>
-                </div>
-                <h3 className="mt-4 text-lg font-medium text-gray-900">TfL Account Required</h3>
-                <p className="mt-2 text-base text-gray-500">
-                  Users must have a registered TfL account to access the digital tap system, ensuring security and fare
-                  collection.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <div className="lg:text-left mb-8">
+                <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">Integration</h2>
+                <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                  Seamless TfL Network Integration
+                </p>
+                <p className="mt-4 text-xl text-gray-500">
+                  Our digital tap system integrates seamlessly with existing TfL infrastructure, supporting both Oyster
+                  cards and contactless payments.
                 </p>
               </div>
 
-              <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mx-auto">
-                  <Badge className="bg-blue-500">2</Badge>
+              <div className="grid grid-cols-1 gap-8">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                      <Badge className="bg-blue-500">1</Badge>
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-medium text-gray-900">TfL Account Required</h3>
+                    <p className="mt-2 text-base text-gray-500">
+                      Users must have a registered TfL account to access the digital tap system, ensuring security and fare
+                      collection.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="mt-4 text-lg font-medium text-gray-900">Oyster & Contactless Support</h3>
-                <p className="mt-2 text-base text-gray-500">
-                  Full compatibility with existing Oyster cards and contactless payment methods for a unified
-                  experience.
-                </p>
-              </div>
 
-              <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white mx-auto">
-                  <Badge className="bg-blue-500">3</Badge>
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                      <Badge className="bg-blue-500">2</Badge>
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-medium text-gray-900">Oyster & Contactless Support</h3>
+                    <p className="mt-2 text-base text-gray-500">
+                      Full compatibility with existing Oyster cards and contactless payment methods for a unified
+                      experience.
+                    </p>
+                  </div>
                 </div>
-                <h3 className="mt-4 text-lg font-medium text-gray-900">Network-Wide Implementation</h3>
-                <p className="mt-2 text-base text-gray-500">
-                  Designed to work across the entire DLR network with potential expansion to other TfL services.
-                </p>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
+                      <Badge className="bg-blue-500">3</Badge>
+                    </div>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-medium text-gray-900">Network-Wide Implementation</h3>
+                    <p className="mt-2 text-base text-gray-500">
+                      Designed to work across the entire DLR network with potential expansion to other TfL services.
+                    </p>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            {/* Social Feed */}
+            <div className="lg:mt-0 mt-12">
+              <SocialFeed />
             </div>
           </div>
         </div>
