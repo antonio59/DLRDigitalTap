@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -10,10 +11,6 @@ import { useToast } from "@/hooks/use-toast"
 import { trackAnalytics } from "@/actions/database"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
-
-interface DLRDigitalTapProps {
-  onBackClick: () => void
-}
 
 const DLR_STATIONS = [
   "Abbey Road DLR Station",
@@ -57,7 +54,7 @@ const DLR_STATIONS = [
   "Woolwich Arsenal DLR Station",
 ]
 
-export default function DLRDigitalTap({ onBackClick }: DLRDigitalTapProps) {
+export default function DLRDigitalTap() {
   const [currentStep, setCurrentStep] = useState<"tap-in" | "journey" | "tap-out" | "complete">("tap-in")
   const [fromStation, setFromStation] = useState("")
   const [toStation, setToStation] = useState("")
@@ -174,14 +171,15 @@ export default function DLRDigitalTap({ onBackClick }: DLRDigitalTapProps) {
       <div className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Button
-              variant="ghost"
-              onClick={onBackClick}
-              className="flex items-center text-gray-600 hover:text-gray-900"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
-            </Button>
+            <Link href="/">
+              <Button
+                variant="ghost"
+                className="flex items-center text-gray-600 hover:text-gray-900"
+              >
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Home
+              </Button>
+            </Link>
             <div className="text-center">
               <h1 className="text-xl font-semibold text-gray-900">DLR Digital Tap Prototype</h1>
               <Badge variant="outline" className="mt-1 text-orange-600 border-orange-600">
@@ -445,9 +443,11 @@ export default function DLRDigitalTap({ onBackClick }: DLRDigitalTapProps) {
                 <Button onClick={resetJourney} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
                   Start New Journey
                 </Button>
-                <Button onClick={onBackClick} variant="outline" className="flex-1">
-                  Back to Home
-                </Button>
+                <Link href="/" className="flex-1">
+                  <Button variant="outline" className="w-full">
+                    Back to Home
+                  </Button>
+                </Link>
               </div>
             </CardContent>
           </Card>

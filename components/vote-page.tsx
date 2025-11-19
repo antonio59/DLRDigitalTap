@@ -9,16 +9,13 @@ import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ArrowLeft, Heart, MessageCircle, Calendar, Users, Target, TrendingUp, Upload, X, Share2, Mail } from "lucide-react"
+import { Heart, MessageCircle, Calendar, Users, Target, TrendingUp, Upload, X, Share2, Mail } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import VoteButton from "./vote-button"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
 import { getComments, submitComment, getTotalVotes } from "@/actions/database"
-
-interface VotePageProps {
-  onNavigate: (page: string) => void
-}
+import SiteHeader from "./site-header"
 
 interface Comment {
   id: string
@@ -28,7 +25,7 @@ interface Comment {
   image_url?: string
 }
 
-export default function VotePage({ onNavigate }: VotePageProps) {
+export default function VotePage() {
   const [comments, setComments] = useState<Comment[]>([])
   const [newComment, setNewComment] = useState("")
   const [userName, setUserName] = useState("")
@@ -167,51 +164,7 @@ export default function VotePage({ onNavigate }: VotePageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <PrototypeBanner />
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Button
-                variant="ghost"
-                onClick={() => onNavigate("home")}
-                className="flex items-center text-gray-600 hover:text-gray-900"
-              >
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Home
-              </Button>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <button
-                  onClick={() => onNavigate("home")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => onNavigate("about")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  About
-                </button>
-                <button
-                  onClick={() => onNavigate("vote")}
-                  className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Vote
-                </button>
-                <button
-                  onClick={() => onNavigate("contact")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Contact
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Campaign Header */}

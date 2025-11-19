@@ -8,57 +8,13 @@ import { ArrowRight, Smartphone, Clock, Users, Shield, TrendingUp, UserCheck, Al
 import VoteButton from "./vote-button"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
+import SiteHeader from "./site-header"
 
-interface LandingPageProps {
-  onNavigate: (page: string) => void
-}
-
-export default function LandingPage({ onNavigate }: LandingPageProps) {
+export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <PrototypeBanner />
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-xl font-bold text-gray-900">
-                  DLR Digital Tap <span className="text-sm font-normal text-orange-600">- Concept Proposal</span>
-                </h1>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <button
-                  onClick={() => onNavigate("home")}
-                  className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => onNavigate("about")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  About
-                </button>
-                <button
-                  onClick={() => onNavigate("vote")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Vote
-                </button>
-                <button
-                  onClick={() => onNavigate("contact")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Contact
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteHeader />
 
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-cyan-600 via-teal-700 to-blue-800">
@@ -216,7 +172,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                   <div className="ml-4">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">Limited Data Collection</h4>
                     <p className="text-gray-600">
-                      Current tap systems provide basic journey data but miss opportunities for better route optimization 
+                      Current tap systems provide basic journey data but miss opportunities for better route optimisation 
                       and service improvements.
                     </p>
                   </div>
@@ -333,7 +289,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                   <div className="ml-4">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">Better TfL Analytics</h4>
                     <p className="text-gray-600">
-                      Provides TfL with detailed journey data for route optimization, capacity planning, and service improvements.
+                      Provides TfL with detailed journey data for route optimisation, capacity planning, and service improvements.
                     </p>
                   </div>
                 </div>
@@ -452,7 +408,7 @@ export default function LandingPage({ onNavigate }: LandingPageProps) {
                     <div className="ml-4">
                       <h4 className="text-lg font-medium text-gray-900">Enhanced Analytics</h4>
                       <p className="mt-2 text-base text-gray-500">
-                        Better data collection for route optimization and service improvements.
+                        Better data collection for route optimisation and service improvements.
                       </p>
                     </div>
                   </div>

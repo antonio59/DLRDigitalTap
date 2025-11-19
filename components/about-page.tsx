@@ -3,64 +3,18 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, User, Mail, Heart, Rocket, Calendar, CheckCircle2, Clock, Target, HelpCircle, ArrowRight, Train, MessageCircle } from "lucide-react"
+import { User, Mail, Heart, Rocket, Calendar, CheckCircle2, Clock, Target, HelpCircle, ArrowRight, Train, MessageCircle } from "lucide-react"
 import VoteButton from "./vote-button"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
+import SiteHeader from "./site-header"
+import Link from "next/link"
 
-interface AboutPageProps {
-  onNavigate: (page: string) => void
-}
-
-export default function AboutPage({ onNavigate }: AboutPageProps) {
+export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <PrototypeBanner />
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Button
-                variant="ghost"
-                onClick={() => onNavigate("home")}
-                className="flex items-center text-gray-600 hover:text-gray-900"
-              >
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Home
-              </Button>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <button
-                  onClick={() => onNavigate("home")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Home
-                </button>
-                <button
-                  onClick={() => onNavigate("about")}
-                  className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  About
-                </button>
-                <button
-                  onClick={() => onNavigate("vote")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Vote
-                </button>
-                <button
-                  onClick={() => onNavigate("contact")}
-                  className="text-gray-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Contact
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <SiteHeader />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
@@ -265,7 +219,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <h4 className="text-lg font-semibold text-gray-900">Phase 5: Advocate for Pilot Program</h4>
                   <p className="text-sm text-gray-500 font-medium mb-2">⏳ Future - When Ready</p>
                   <p className="text-gray-600">
-                    With substantial public backing, we'll formally propose a pilot program at 2-3 high-traffic stations. 
+                    With substantial public backing, we'll formally propose a pilot programme at 2-3 high-traffic stations. 
                     Real-world testing would provide data on passenger adoption, system reliability, and operational benefits 
                     for TfL to evaluate.
                   </p>
@@ -446,14 +400,18 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             </p>
             <div className="flex justify-center space-x-4 flex-wrap gap-2">
               <VoteButton />
-              <Button onClick={() => onNavigate("prototype")} variant="outline">
-                See the Demo
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button onClick={() => onNavigate("contact")} variant="outline">
-                <Mail className="h-4 w-4 mr-2" />
-                Get in Touch
-              </Button>
+              <Link href="/prototype">
+                <Button variant="outline">
+                  See the Demo
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="outline">
+                  <Mail className="h-4 w-4 mr-2" />
+                  Get in Touch
+                </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>
