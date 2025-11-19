@@ -1,20 +1,35 @@
 "use server"
 
 import { supabase } from "@/lib/supabase"
-import { randomBytes } from "crypto"
+import { cookies } from "next/headers"
 
-// Helper to generate secure user ID using cryptographically secure randomness
+// Helper to generate secure user ID
 function generateUserId() {
   const timestamp = Date.now()
-  const randomPart = randomBytes(9).toString('base64url').substring(0, 9)
+  const randomPart = Math.random().toString(36).substring(2, 15)
   return `user_${timestamp}_${randomPart}`
 }
 
 // Helper to get user ID from cookies or generate new one
 function getUserId() {
-  // In a real implementation, this would get the user ID from cookies
-  // For now, we'll generate a new one each time
-  return generateUserId()
+  const cookieStore = cookies()
+  const existingUserId = cookieStore.get("dlr_user_id")?.value
+  
+  if (existingUserId) {
+    return existingUserId
+  }
+  
+  const newUserId = generateUserId()
+  // Set cookie for 1 year
+  cookieStore.set("dlr_user_id", newUserId, {
+    secure: process.env.NODE_ENV === "production",
+    httpOnly: true,
+    sameSite: "strict",
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+    path: "/",
+  })
+  
+  return newUserId
 }
 
 // Vote functions
@@ -22,7 +37,7 @@ export async function submitVote(feedback?: string) {
   try {
     const userId = getUserId()
 
-    // Check if user has already voted (simplified check)
+    // Check if user has already voted
     const { data: existingVote } = await supabase.from("votes").select("id").eq("user_id", userId).single()
 
     if (existingVote) {
@@ -38,13 +53,13 @@ export async function submitVote(feedback?: string) {
 
     if (error) {
       console.error("Error submitting vote:", error)
-      return { success: false, error: "Failed to submit vote" }
+      return { success: false, error: error.message || "Failed to submit vote" }
     }
 
     return { success: true }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error submitting vote:", error)
-    return { success: false, error: "Failed to submit vote" }
+    return { success: false, error: error.message || "Failed to submit vote" }
   }
 }
 
@@ -66,7 +81,10 @@ export async function getTotalVotes() {
 
 export async function hasUserVoted() {
   try {
-    const userId = getUserId()
+    const cookieStore = cookies()
+    const userId = cookieStore.get("dlr_user_id")?.value
+
+    if (!userId) return { success: true, hasVoted: false }
 
     const { data, error } = await supabase.from("votes").select("id").eq("user_id", userId).single()
 
@@ -96,14 +114,14 @@ export async function submitComment(formData: FormData) {
     // Handle image upload if present
     if (image && image.size > 0) {
       const fileExt = image.name.split(".").pop()
-      const randomPart = randomBytes(12).toString('base64url').substring(0, 12)
+      const randomPart = Math.random().toString(36).substring(2, 15)
       const fileName = `${Date.now()}_${randomPart}.${fileExt}`
 
       const { error: uploadError } = await supabase.storage.from("image").upload(fileName, image)
 
       if (uploadError) {
         console.error("Error uploading image:", uploadError)
-        return { success: false, error: "Failed to upload image" }
+        return { success: false, error: "Failed to upload image: " + uploadError.message }
       }
 
       // Get public URL
@@ -125,13 +143,13 @@ export async function submitComment(formData: FormData) {
 
     if (error) {
       console.error("Error submitting comment:", error)
-      return { success: false, error: "Failed to submit comment" }
+      return { success: false, error: error.message || "Failed to submit comment" }
     }
 
     return { success: true }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error submitting comment:", error)
-    return { success: false, error: "Failed to submit comment" }
+    return { success: false, error: error.message || "Failed to submit comment" }
   }
 }
 
