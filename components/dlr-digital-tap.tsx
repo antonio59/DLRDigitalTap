@@ -181,7 +181,7 @@ export default function DLRDigitalTap() {
               </Button>
             </Link>
             <div className="text-center">
-              <h1 className="text-xl font-semibold text-gray-900">DLR Digital Tap Prototype</h1>
+              <h1 className="text-xl font-semibold text-gray-900">Digital Tap Prototype</h1>
               <Badge variant="outline" className="mt-1 text-orange-600 border-orange-600">
                 <AlertTriangle className="h-3 w-3 mr-1" />
                 CONCEPT DEMO

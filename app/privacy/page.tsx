@@ -1,4 +1,4 @@
-export const metadata = { title: "Privacy Policy - DLR Digital Tap" };
+export const metadata = { title: "Privacy Policy - Digital Tap" };
 
 import SiteHeader from "@/components/site-header";
 
@@ -22,7 +22,7 @@ export default function Privacy() {
 
           <h2 className="text-2xl font-bold mt-8 mb-4">1. Introduction</h2>
           <p>
-            This Privacy Policy explains how DLR Digital Tap ("we", "our", "us") collects, uses, stores, and protects 
+            This Privacy Policy explains how Digital Tap ("we", "our", "us") collects, uses, stores, and protects 
             your personal information when you use our prototype demonstration service. By using the Service, you consent 
             to the data practices described in this policy.
           </p>
@@ -158,7 +158,7 @@ export default function Privacy() {
 
           <div className="mt-12 pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              <strong>Data Controller:</strong> DLR Digital Tap Prototype<br />
+              <strong>Data Controller:</strong> Digital Tap Prototype<br />
               <strong>Jurisdiction:</strong> England and Wales<br />
               <strong>Compliance:</strong> UK GDPR and Data Protection Act 2018
             </p>

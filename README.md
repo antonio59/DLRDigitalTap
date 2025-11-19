@@ -1,4 +1,4 @@
-# DLR Digital Tap
+# Digital Tap
 
 Prototype app that digitises the Docklands Light Railway (DLR) tap-in / tap-out travel experience. Built with **Next.js 14**, **Supabase**, **Tailwind CSS**, and **Resend** for transactional email.
 
@@ -7,7 +7,7 @@ Prototype app that digitises the Docklands Light Railway (DLR) tap-in / tap-out 
 
 *Automatically synced with your [v0.dev](https://v0.dev) deployments*
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/antonio59s-projects/v0-dlr-digital-tap-prototype)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/antonio59s-projects/v0-digital-tap-prototype)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/TlpmhNkRFxV)
 
 ## Features
@@ -60,7 +60,7 @@ pnpm build && pnpm start
 
 Your project is live at:
 
-**[https://vercel.com/antonio59s-projects/v0-dlr-digital-tap-prototype](https://vercel.com/antonio59s-projects/v0-dlr-digital-tap-prototype)**
+**[https://vercel.com/antonio59s-projects/v0-digital-tap-prototype](https://vercel.com/antonio59s-projects/v0-digital-tap-prototype)**
 
 ## Deployment on Netlify
 

@@ -96,7 +96,7 @@ export default function ContactPage() {
           <MessageSquare className="h-16 w-16 mx-auto mb-4" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
           <p className="text-xl md:text-2xl text-cyan-50 max-w-3xl mx-auto">
-            Have questions, feedback, or suggestions about DLR Digital Tap? We'd love to hear from you.
+            Have questions, feedback, or suggestions about Digital Tap? We'd love to hear from you.
           </p>
         </div>
       </div>
@@ -159,7 +159,7 @@ export default function ContactPage() {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us your thoughts, questions, or feedback about DLR Digital Tap..."
+                  placeholder="Tell us your thoughts, questions, or feedback about Digital Tap..."
                   rows={6}
                   required
                 />

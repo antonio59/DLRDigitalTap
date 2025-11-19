@@ -2,7 +2,7 @@ export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "DLR Digital Tap",
+    name: "Digital Tap",
     description: "Revolutionary contactless travel system for London's DLR network",
     url: "https://dlrdigitaltap.xyz",
     applicationCategory: "TransportationApplication",
@@ -14,7 +14,7 @@ export default function StructuredData() {
     },
     creator: {
       "@type": "Organization",
-      name: "DLR Digital Tap Team",
+      name: "Digital Tap Team",
     },
     keywords: "DLR, digital tap, contactless travel, London transport, TfL, public transport",
     inLanguage: "en-GB",

@@ -10,9 +10,9 @@ import SiteFooter from "@/components/site-footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "DLR Digital Tap - Revolutionary Contactless Travel",
+  title: "Digital Tap - Revolutionary Contactless Travel",
   description:
-    "Experience the future of DLR travel with our innovative digital tap system. No more crowded tap points, just seamless contactless journeys across London's Docklands Light Railway.",
+    "Experience the future of DLR travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys across London's Docklands Light Railway.",
   keywords: [
     "DLR",
     "Docklands Light Railway",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     "London Underground",
     "Tube Map",
   ],
-  authors: [{ name: "DLR Digital Tap Team" }],
-  creator: "DLR Digital Tap",
-  publisher: "DLR Digital Tap",
+  authors: [{ name: "Digital Tap Team" }],
+  creator: "Digital Tap",
+  publisher: "Digital Tap",
   formatDetection: {
     email: false,
     address: false,
@@ -44,17 +44,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "DLR Digital Tap - Revolutionary Contactless Travel",
+    title: "Digital Tap - Revolutionary Contactless Travel",
     description:
-      "Experience the future of DLR travel with our innovative digital tap system. No more crowded tap points, just seamless contactless journeys.",
+      "Experience the future of DLR travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
     url: "https://dlrdigitaltap.xyz",
-    siteName: "DLR Digital Tap",
+    siteName: "Digital Tap",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DLR Digital Tap - Revolutionary Contactless Travel",
+        alt: "Digital Tap - Revolutionary Contactless Travel",
       },
     ],
     locale: "en_GB",
@@ -62,9 +62,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DLR Digital Tap - Revolutionary Contactless Travel",
+    title: "Digital Tap - Revolutionary Contactless Travel",
     description:
-      "Experience the future of DLR travel with our innovative digital tap system. No more crowded tap points, just seamless contactless journeys.",
+      "Experience the future of DLR travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
     images: ["/twitter-image.png"],
     creator: "@dlrdigitaltap",
     site: "@dlrdigitaltap",

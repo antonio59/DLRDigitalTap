@@ -21,7 +21,7 @@ export default function AboutPage() {
         <div className="text-center mb-8">
           <Badge className="bg-orange-500 text-white mb-4">Campaign Concept</Badge>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">About This Campaign</h1>
-          <p className="text-xl text-gray-600 mb-6">A citizen-led proposal to modernise DLR travel</p>
+          <p className="text-xl text-gray-600 mb-6">A citizen-led proposal to modernise travel on the DLR</p>
           <VoteButton />
         </div>
 

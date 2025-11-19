@@ -52,7 +52,7 @@ export default function VoteButton() {
         setHasVoted(true)
         toast({
           title: "Vote submitted!",
-          description: "Thank you for supporting DLR Digital Tap!",
+          description: "Thank you for supporting Digital Tap!",
           variant: "default",
         })
       } else {

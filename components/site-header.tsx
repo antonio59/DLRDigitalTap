@@ -18,7 +18,7 @@ export default function SiteHeader() {
     <header className="border-b bg-white/80 backdrop-blur sticky top-0 z-40">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 h-14">
         <Link href="/" className="font-semibold text-lg text-blue-600">
-          DLR Digital Tap
+          Digital Tap
         </Link>
         <nav className="hidden md:flex gap-6 text-gray-600 text-sm font-medium">
           {navItems.map(({ href, label }) => (

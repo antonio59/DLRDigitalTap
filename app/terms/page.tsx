@@ -1,4 +1,4 @@
-export const metadata = { title: "Terms of Service - DLR Digital Tap" };
+export const metadata = { title: "Terms of Service - Digital Tap" };
 
 import SiteHeader from "@/components/site-header";
 
@@ -22,7 +22,7 @@ export default function Terms() {
 
           <h2 className="text-2xl font-bold mt-8 mb-4">1. Acceptance of Terms</h2>
           <p>
-            By accessing and using the DLR Digital Tap prototype ("the Service"), you accept and agree to be bound by these Terms of Service. 
+            By accessing and using the Digital Tap prototype ("the Service"), you accept and agree to be bound by these Terms of Service. 
             If you do not agree to these terms, please do not use the Service.
           </p>
 
@@ -104,7 +104,7 @@ export default function Terms() {
 
           <h2 className="text-2xl font-bold mt-8 mb-4">8. Intellectual Property</h2>
           <p>
-            All design, code, concepts, and materials related to the DLR Digital Tap prototype are the intellectual property 
+            All design, code, concepts, and materials related to the Digital Tap prototype are the intellectual property 
             of the creators. The "DLR" name and branding are owned by Transport for London (TfL). This prototype is an 
             unofficial demonstration and is not affiliated with, endorsed by, or connected to TfL.
           </p>
@@ -128,7 +128,7 @@ export default function Terms() {
 
           <div className="mt-12 pt-8 border-t border-gray-200">
             <p className="text-sm text-gray-500">
-              By using the DLR Digital Tap prototype, you acknowledge that you have read, understood, and agree to be 
+              By using the Digital Tap prototype, you acknowledge that you have read, understood, and agree to be 
               bound by these Terms of Service.
             </p>
           </div>

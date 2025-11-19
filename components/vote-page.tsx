@@ -169,7 +169,7 @@ export default function VotePage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Campaign Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Vote for DLR Digital Tap</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Vote for Digital Tap</h1>
           <p className="text-xl text-gray-600 mb-6">
             Help us bring revolutionary contactless travel to the DLR network
           </p>
@@ -244,8 +244,8 @@ export default function VotePage() {
                   variant="outline"
                   onClick={() => {
                     const url = window.location.href
-                    const subject = "Support DLR Digital Tap Campaign"
-                    const body = `I just voted for the DLR Digital Tap campaign!\n\nThis citizen-led proposal would bring automatic digital tap technology to the DLR, making journeys easier, more accessible, and more convenient for everyone.\n\nCheck it out and vote: ${url}\n\nEvery vote strengthens our ongoing campaign and shows TfL there's genuine demand for this improvement.`
+                    const subject = "Support Digital Tap Campaign"
+                    const body = `I just voted for the Digital Tap campaign!\n\nThis citizen-led proposal would bring automatic digital tap technology to the DLR, making journeys easier, more accessible, and more convenient for everyone.\n\nCheck it out and vote: ${url}\n\nEvery vote strengthens our ongoing campaign and shows TfL there's genuine demand for this improvement.`
                     window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
                   }}
                   className="bg-white"
@@ -336,7 +336,7 @@ export default function VotePage() {
                   id="comment"
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
-                  placeholder="Share your thoughts about DLR Digital Tap..."
+                  placeholder="Share your thoughts about Digital Tap..."
                   rows={4}
                   required
                 />

@@ -10,7 +10,7 @@ export default function SiteFooter() {
         <div className="flex items-center gap-1">
           <span>Made with</span>
           <Heart className="w-4 h-4 text-red-500" />
-          <span>by DLR Digital Tap</span>
+          <span>by Digital Tap</span>
         </div>
         <nav className="flex flex-wrap gap-4 whitespace-nowrap">
           <Link href="/" className="hover:text-white transition-colors">Home</Link>

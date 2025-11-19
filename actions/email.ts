@@ -18,7 +18,7 @@ export async function sendContactEmail(formData: FormData) {
     const emailSubject = subject || "New Contact Form Submission"
 
     const { data, error} = await resend.emails.send({
-      from: "DLR Digital Tap <contact@dlrdigitaltap.xyz>",
+      from: "Digital Tap <contact@dlrdigitaltap.xyz>",
       to: ["your-email@example.com"], // TODO: Replace with your actual email address
       subject: emailSubject,
       html: `
@@ -38,7 +38,7 @@ export async function sendContactEmail(formData: FormData) {
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">
-            <p>This message was sent from the DLR Digital Tap contact form.</p>
+            <p>This message was sent from the Digital Tap contact form.</p>
             <p>Reply directly to this email to respond to ${name}.</p>
           </div>
         </div>

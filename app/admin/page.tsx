@@ -97,7 +97,7 @@ export default function AdminDashboard() {
   const generateSocialPost = () => {
     if (!stats) return "";
 
-    return `🚇 DLR Digital Tap Campaign Update
+    return `🚇 Digital Tap Campaign Update
 
 📊 ${stats.totalVotes.toLocaleString()} people have voted for contactless, queue-free travel on the DLR!
 
@@ -272,43 +272,6 @@ Every voice matters. Join the movement: https://dlrdigitaltap.netlify.app
                       </>
                     )}
                   </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* API Endpoint Info */}
-          <Card className="mb-8 border-blue-200 bg-blue-50">
-            <CardHeader>
-              <CardTitle>n8n Webhook Integration</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <Label className="text-gray-700 font-semibold mb-1 block">API Endpoint</Label>
-                  <code className="block bg-white p-3 rounded border text-sm">
-                    {typeof window !== "undefined"
-                      ? `${window.location.origin}/api/stats`
-                      : "https://your-domain.com/api/stats"}
-                  </code>
-                </div>
-                <div>
-                  <Label className="text-gray-700 font-semibold mb-1 block">Method</Label>
-                  <Badge>GET</Badge>
-                </div>
-                <div>
-                  <Label className="text-gray-700 font-semibold mb-1 block">
-                    Authorization Header
-                  </Label>
-                  <code className="block bg-white p-3 rounded border text-sm">
-                    Authorization: Bearer YOUR_ADMIN_API_KEY
-                  </code>
-                </div>
-                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-                  <p className="text-sm text-yellow-800">
-                    <strong>Important:</strong> Set <code>ADMIN_API_KEY</code> in your environment
-                    variables. This key is required for n8n to access the stats API.
-                  </p>
                 </div>
               </div>
             </CardContent>
