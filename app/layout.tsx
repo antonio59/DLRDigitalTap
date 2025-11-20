@@ -101,7 +101,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-white`} suppressHydrationWarning>
         <Script
-          src="https://umami.antoniosmith.xyz/script.js"
+          src="/script.js"
           data-website-id="bd7e8714-0165-4646-a110-34611e2abacb"
           strategy="afterInteractive"
         />
