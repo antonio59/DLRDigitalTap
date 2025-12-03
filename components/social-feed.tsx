@@ -2,7 +2,6 @@
 
 import { useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MessageSquare } from "lucide-react"
 
 export default function SocialFeed() {
   useEffect(() => {

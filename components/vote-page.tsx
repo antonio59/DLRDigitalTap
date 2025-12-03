@@ -2,58 +2,31 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Heart, MessageCircle, Calendar, Users, Target, TrendingUp, Upload, X, Share2, Mail } from "lucide-react"
+import { Heart, MessageCircle, Users, TrendingUp, Upload, X, Share2, Mail } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import VoteButton from "./vote-button"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
-import { getComments, submitComment, getTotalVotes } from "@/actions/database"
+import { useVotes } from "@/hooks/use-votes"
+import { useComments } from "@/hooks/use-comments"
 import SiteHeader from "./site-header"
 
-interface Comment {
-  id: string
-  name: string
-  comment: string
-  created_at: string
-  image_url?: string
-}
-
 export default function VotePage() {
-  const [comments, setComments] = useState<Comment[]>([])
   const [newComment, setNewComment] = useState("")
   const [userName, setUserName] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [voteCount, setVoteCount] = useState(1458)
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const { toast } = useToast()
-
-  useEffect(() => {
-    loadData()
-  }, [])
-
-  const loadData = async () => {
-    try {
-      const [commentsResult, votesResult] = await Promise.all([getComments(), getTotalVotes()])
-
-      if (commentsResult.success) {
-        setComments(commentsResult.comments)
-      }
-
-      if (votesResult.success) {
-        setVoteCount(votesResult.count)
-      }
-    } catch (error) {
-      console.error("Error loading data:", error)
-    }
-  }
+  const { totalVotes } = useVotes()
+  const { comments, submit: submitCommentAction } = useComments()
 
   const handleImageSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -106,14 +79,11 @@ export default function VotePage() {
     setIsSubmitting(true)
 
     try {
-      const formData = new FormData()
-      formData.append("name", userName.trim())
-      formData.append("comment", newComment.trim())
-      if (selectedImage) {
-        formData.append("image", selectedImage)
-      }
-
-      const result = await submitComment(formData)
+      const result = await submitCommentAction(
+        userName.trim(),
+        newComment.trim(),
+        selectedImage || undefined
+      )
 
       if (result.success) {
         toast({
@@ -127,9 +97,6 @@ export default function VotePage() {
         setUserName("")
         setSelectedImage(null)
         setImagePreview(null)
-
-        // Reload comments
-        loadData()
       } else {
         toast({
           title: "Error",
@@ -159,8 +126,6 @@ export default function VotePage() {
     })
   }
 
-  const progressPercentage = Math.min((voteCount / 2000) * 100, 100)
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <PrototypeBanner />
@@ -171,7 +136,7 @@ export default function VotePage() {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Vote for Digital Tap</h1>
           <p className="text-xl text-gray-600 mb-6">
-            Help us bring revolutionary contactless travel to the DLR network
+            Help us bring revolutionary contactless travel to London's transport network
           </p>
           <VoteButton />
         </div>
@@ -181,7 +146,7 @@ export default function VotePage() {
           <Card>
             <CardContent className="p-4 text-center">
               <Heart className="h-8 w-8 text-red-500 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">{voteCount.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-gray-900">{totalVotes.toLocaleString()}</div>
               <div className="text-sm text-gray-500">Total Votes</div>
             </CardContent>
           </Card>
@@ -210,7 +175,7 @@ export default function VotePage() {
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Ongoing Campaign</h3>
               <p className="text-gray-700">
                 We engage with TfL regularly through social media, sharing your feedback and the growing support for Digital Tap. 
-                Your vote and comments help us demonstrate continued demand for this improvement to the DLR network.
+                Your vote and comments help us demonstrate continued demand for this improvement to London's transport network.
               </p>
             </div>
           </CardContent>
@@ -225,14 +190,14 @@ export default function VotePage() {
                 Help Spread the Word
               </h3>
               <p className="text-gray-600 mb-4">
-                Share this campaign with fellow DLR passengers and help us reach our goal faster!
+                Share this campaign with fellow London passengers and help us reach our goal faster!
               </p>
               <div className="flex justify-center gap-3 flex-wrap">
                 <Button
                   variant="outline"
                   onClick={() => {
                     const url = window.location.href
-                    const text = "Help bring digital tap technology to the DLR! Vote for this campaign to make our journeys easier and more accessible."
+                    const text = "Help bring digital tap technology to London! Vote for this campaign to make our journeys easier and more accessible."
                     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank')
                   }}
                   className="bg-white"
@@ -245,7 +210,7 @@ export default function VotePage() {
                   onClick={() => {
                     const url = window.location.href
                     const subject = "Support Digital Tap Campaign"
-                    const body = `I just voted for the Digital Tap campaign!\n\nThis citizen-led proposal would bring automatic digital tap technology to the DLR, making journeys easier, more accessible, and more convenient for everyone.\n\nCheck it out and vote: ${url}\n\nEvery vote strengthens our ongoing campaign and shows TfL there's genuine demand for this improvement.`
+                    const body = `I just voted for the London Digital Tap campaign!\n\nThis citizen-led proposal would bring automatic digital tap technology to London's transport network, making journeys easier, more accessible, and more convenient for everyone.\n\nCheck it out and vote: ${url}\n\nEvery vote strengthens our ongoing campaign and shows TfL there's genuine demand for this improvement.`
                     window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
                   }}
                   className="bg-white"
@@ -284,7 +249,7 @@ export default function VotePage() {
               <div>
                 <h3 className="font-semibold text-gray-900 mb-2">Our Mission</h3>
                 <p className="text-gray-600">
-                  We're campaigning to bring digital tap technology to the DLR network, making travel more convenient,
+                  We're campaigning to bring digital tap technology to London's transport network, making travel more convenient,
                   accessible, and efficient for all passengers. Your vote helps demonstrate public support for this
                   innovation.
                 </p>
@@ -294,7 +259,7 @@ export default function VotePage() {
                 <h3 className="font-semibold text-gray-900 mb-2">What Happens Next?</h3>
                 <p className="text-gray-600">
                   We engage with TfL regularly through social media, sharing growing support and passenger feedback. 
-                  Your vote and comments help demonstrate real demand for this improvement to the DLR network.
+                  Your vote and comments help demonstrate real demand for this improvement to London's transport network.
                 </p>
               </div>
 
