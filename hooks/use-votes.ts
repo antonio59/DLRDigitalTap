@@ -3,14 +3,24 @@
 import { useMutation, useQuery } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { getUserId } from "@/lib/user-id"
+import { useConvexAvailable } from "@/components/convex-provider"
 
 export function useVotes() {
-  const submitVote = useMutation(api.votes.submit)
-  const totalVotesQuery = useQuery(api.votes.getTotal)
+  const isConvexAvailable = useConvexAvailable()
   const userId = typeof window !== "undefined" ? getUserId() : ""
-  const hasVotedQuery = useQuery(api.votes.hasUserVoted, { userId: userId || undefined })
+  
+  const submitVote = useMutation(api.votes.submit)
+  const totalVotesQuery = useQuery(api.votes.getTotal, isConvexAvailable ? {} : "skip")
+  const hasVotedQuery = useQuery(
+    api.votes.hasUserVoted,
+    isConvexAvailable && userId ? { userId } : "skip"
+  )
 
   const submit = async (feedback?: string) => {
+    if (!isConvexAvailable) {
+      return { success: false, error: "Service not available" }
+    }
+    
     const currentUserId = getUserId()
     if (!currentUserId) {
       return { success: false, error: "Could not identify user" }
@@ -31,6 +41,6 @@ export function useVotes() {
     submit,
     totalVotes: totalVotesQuery?.count ?? 0,
     hasVoted: hasVotedQuery?.hasVoted ?? false,
-    isLoading: totalVotesQuery === undefined || hasVotedQuery === undefined,
+    isLoading: isConvexAvailable && (totalVotesQuery === undefined || hasVotedQuery === undefined),
   }
 }
