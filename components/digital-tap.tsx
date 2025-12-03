@@ -6,11 +6,34 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, MapPin, CreditCard, CheckCircle, Train, Smartphone, AlertTriangle } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ArrowLeft, MapPin, CreditCard, CheckCircle, Train, Smartphone, AlertTriangle, ArrowRightLeft } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { trackAnalytics } from "@/actions/database"
+import { useAnalytics } from "@/hooks/use-analytics"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
+
+// Pink card reader interchange stations
+const INTERCHANGE_STATIONS = [
+  { name: "Blackhorse Road", lines: ["Victoria line", "London Overground"] },
+  { name: "Canada Water", lines: ["Jubilee line", "London Overground"] },
+  { name: "Clapham Junction", lines: ["National Rail", "London Overground"] },
+  { name: "Ealing Broadway", lines: ["Central line", "District line", "Elizabeth line", "National Rail"] },
+  { name: "Gospel Oak", lines: ["London Overground"] },
+  { name: "Gunnersbury", lines: ["District line", "London Overground"] },
+  { name: "Hackney Central", lines: ["London Overground"] },
+  { name: "Hackney Downs", lines: ["London Overground", "National Rail"] },
+  { name: "Highbury & Islington", lines: ["Victoria line", "London Overground"] },
+  { name: "Kensington (Olympia)", lines: ["District line", "London Overground"] },
+  { name: "Rayners Lane", lines: ["Metropolitan line", "Piccadilly line"] },
+  { name: "Richmond", lines: ["District line", "London Overground", "National Rail"] },
+  { name: "Stratford", lines: ["Central line", "Jubilee line", "Elizabeth line", "DLR", "London Overground", "National Rail"] },
+  { name: "Surrey Quays", lines: ["London Overground"] },
+  { name: "West Brompton", lines: ["District line", "London Overground"] },
+  { name: "Whitechapel", lines: ["District line", "Hammersmith & City line", "Elizabeth line", "London Overground"] },
+  { name: "Willesden Junction", lines: ["Bakerloo line", "London Overground"] },
+  { name: "Wimbledon", lines: ["District line", "National Rail", "Tramlink"] },
+]
 
 const DLR_STATIONS = [
   "Abbey Road DLR Station",
@@ -54,13 +77,18 @@ const DLR_STATIONS = [
   "Woolwich Arsenal DLR Station",
 ]
 
-export default function DLRDigitalTap() {
+export default function DigitalTap() {
+  const [mode, setMode] = useState<"dlr" | "interchange">("dlr")
   const [currentStep, setCurrentStep] = useState<"tap-in" | "journey" | "tap-out" | "complete">("tap-in")
   const [fromStation, setFromStation] = useState("")
   const [toStation, setToStation] = useState("")
+  const [interchangeStation, setInterchangeStation] = useState("")
+  const [fromLine, setFromLine] = useState("")
+  const [toLine, setToLine] = useState("")
   const [journeyTime, setJourneyTime] = useState(0)
   const [fare, setFare] = useState(0)
   const { toast } = useToast()
+  const { track } = useAnalytics()
 
   useEffect(() => {
     let interval: NodeJS.Timeout
@@ -74,10 +102,10 @@ export default function DLRDigitalTap() {
 
   useEffect(() => {
     // Track prototype usage
-    trackAnalytics("prototype_view", "/prototype", {
+    track("prototype_view", "/prototype", {
       step: currentStep,
     })
-  }, [currentStep])
+  }, [currentStep, track])
 
   const handleTapIn = async () => {
     if (!fromStation) {
@@ -89,7 +117,7 @@ export default function DLRDigitalTap() {
       return
     }
 
-    await trackAnalytics("prototype_tap_in", "/prototype", {
+    await track("prototype_tap_in", "/prototype", {
       station: fromStation,
     })
 
@@ -132,7 +160,7 @@ export default function DLRDigitalTap() {
     setFare(calculatedFare)
     setCurrentStep("complete")
 
-    await trackAnalytics("prototype_tap_out", "/prototype", {
+    await track("prototype_tap_out", "/prototype", {
       from_station: fromStation,
       to_station: toStation,
       journey_time: journeyTime,
@@ -150,8 +178,45 @@ export default function DLRDigitalTap() {
     setCurrentStep("tap-in")
     setFromStation("")
     setToStation("")
+    setInterchangeStation("")
+    setFromLine("")
+    setToLine("")
     setJourneyTime(0)
     setFare(0)
+  }
+
+  const handleModeChange = (newMode: string) => {
+    setMode(newMode as "dlr" | "interchange")
+    resetJourney()
+  }
+
+  const getSelectedInterchangeStation = () => {
+    return INTERCHANGE_STATIONS.find(s => s.name === interchangeStation)
+  }
+
+  const handleInterchangeTap = async () => {
+    if (!interchangeStation || !fromLine || !toLine) {
+      toast({
+        title: "Please complete all fields",
+        description: "Select interchange station and both lines.",
+        variant: "destructive",
+      })
+      return
+    }
+
+    await track("prototype_interchange", "/prototype", {
+      station: interchangeStation,
+      from_line: fromLine,
+      to_line: toLine,
+    })
+
+    setCurrentStep("complete")
+    setFare(0) // Interchange doesn't add fare
+    toast({
+      title: "Interchange registered!",
+      description: `Changed from ${fromLine} to ${toLine} at ${interchangeStation}`,
+      variant: "default",
+    })
   }
 
   const formatTime = (seconds: number) => {
@@ -193,8 +258,22 @@ export default function DLRDigitalTap() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Progress Indicator */}
-        <div className="mb-8">
+        {/* Mode Selection Tabs */}
+        <Tabs value={mode} onValueChange={handleModeChange} className="mb-8">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="dlr" className="flex items-center gap-2">
+              <Train className="h-4 w-4" />
+              DLR Journey
+            </TabsTrigger>
+            <TabsTrigger value="interchange" className="flex items-center gap-2">
+              <ArrowRightLeft className="h-4 w-4" />
+              Interchange
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+
+        {/* Progress Indicator - only show for DLR mode */}
+        {mode === "dlr" && <div className="mb-8">
           <div className="flex items-center justify-between">
             <div className={`flex items-center ${currentStep === "tap-in" ? "text-blue-600" : "text-green-600"}`}>
               <div
@@ -261,10 +340,146 @@ export default function DLRDigitalTap() {
               }}
             />
           </div>
-        </div>
+        </div>}
 
-        {/* Main Content */}
-        {currentStep === "tap-in" && (
+        {/* Interchange Mode UI */}
+        {mode === "interchange" && currentStep !== "complete" && (
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <ArrowRightLeft className="h-5 w-5 mr-2" />
+                Pink Card Reader Interchange
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-pink-50 border border-pink-200 p-4 rounded-lg">
+                <p className="text-sm text-pink-800">
+                  <strong>What is this?</strong> Pink card readers are located at interchange stations where you change between different lines. 
+                  Tapping them ensures you pay the correct fare when your journey doesn't pass through Zone 1.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Select interchange station</label>
+                <Select value={interchangeStation} onValueChange={(val) => {
+                  setInterchangeStation(val)
+                  setFromLine("")
+                  setToLine("")
+                }}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Choose an interchange station" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {INTERCHANGE_STATIONS.map((station) => (
+                      <SelectItem key={station.name} value={station.name}>
+                        {station.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {interchangeStation && (
+                <>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <p className="text-sm text-gray-600">
+                      <strong>Available lines:</strong> {getSelectedInterchangeStation()?.lines.join(", ")}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Coming from</label>
+                      <Select value={fromLine} onValueChange={setFromLine}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select line" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {getSelectedInterchangeStation()?.lines.map((line) => (
+                            <SelectItem key={line} value={line}>
+                              {line}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Changing to</label>
+                      <Select value={toLine} onValueChange={setToLine}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select line" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {getSelectedInterchangeStation()?.lines.filter(l => l !== fromLine).map((line) => (
+                            <SelectItem key={line} value={line}>
+                              {line}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <Button
+                    onClick={handleInterchangeTap}
+                    className="w-full bg-pink-600 hover:bg-pink-700 text-white py-3"
+                    disabled={!fromLine || !toLine}
+                  >
+                    <Smartphone className="h-5 w-5 mr-2" />
+                    Tap Pink Reader at {interchangeStation}
+                  </Button>
+                </>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Interchange Complete */}
+        {mode === "interchange" && currentStep === "complete" && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center text-green-600">
+                <CheckCircle className="h-5 w-5 mr-2" />
+                Interchange Registered!
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="bg-green-50 p-4 rounded-lg text-center">
+                <p className="text-green-800 font-medium">Your route has been validated</p>
+                <p className="text-sm text-green-600 mt-1">You won't be charged Zone 1 fares</p>
+              </div>
+
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <span className="font-medium">Station:</span>
+                  <span>{interchangeStation}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <span className="font-medium">From:</span>
+                  <span>{fromLine}</span>
+                </div>
+                <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <span className="font-medium">To:</span>
+                  <span>{toLine}</span>
+                </div>
+              </div>
+
+              <div className="flex space-x-3">
+                <Button onClick={resetJourney} className="flex-1 bg-pink-600 hover:bg-pink-700 text-white">
+                  New Interchange
+                </Button>
+                <Link href="/" className="flex-1">
+                  <Button variant="outline" className="w-full">
+                    Back to Home
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* DLR Mode - Main Content */}
+        {mode === "dlr" && currentStep === "tap-in" && (
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -311,7 +526,7 @@ export default function DLRDigitalTap() {
           </Card>
         )}
 
-        {currentStep === "journey" && (
+        {mode === "dlr" && currentStep === "journey" && (
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -362,7 +577,7 @@ export default function DLRDigitalTap() {
           </Card>
         )}
 
-        {currentStep === "tap-out" && (
+        {mode === "dlr" && currentStep === "tap-out" && (
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -394,7 +609,7 @@ export default function DLRDigitalTap() {
           </Card>
         )}
 
-        {currentStep === "complete" && (
+        {mode === "dlr" && currentStep === "complete" && (
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center text-green-600">

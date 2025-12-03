@@ -1,11 +1,11 @@
 "use client"
 
-import DLRDigitalTap from "@/components/dlr-digital-tap"
+import DigitalTap from "@/components/digital-tap"
 
 export default function PrototypePage() {
   return (
     <div className="min-h-screen bg-white">
-      <DLRDigitalTap />
+      <DigitalTap />
     </div>
   )
 }

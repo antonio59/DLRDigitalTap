@@ -1,36 +1,15 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Heart, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { submitVote, getTotalVotes, hasUserVoted } from "@/actions/database"
+import { useVotes } from "@/hooks/use-votes"
 
 export default function VoteButton() {
-  const [voteCount, setVoteCount] = useState(1458)
-  const [hasVoted, setHasVoted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
-
-  useEffect(() => {
-    loadVoteData()
-  }, [])
-
-  const loadVoteData = async () => {
-    try {
-      const [totalVotes, userHasVoted] = await Promise.all([getTotalVotes(), hasUserVoted()])
-
-      if (totalVotes.success) {
-        setVoteCount(totalVotes.count)
-      }
-
-      if (userHasVoted.success) {
-        setHasVoted(userHasVoted.hasVoted)
-      }
-    } catch (error) {
-      console.error("Error loading vote data:", error)
-    }
-  }
+  const { submit, totalVotes, hasVoted, isLoading } = useVotes()
 
   const handleVote = async () => {
     if (hasVoted) {
@@ -42,14 +21,12 @@ export default function VoteButton() {
       return
     }
 
-    setIsLoading(true)
+    setIsSubmitting(true)
 
     try {
-      const result = await submitVote()
+      const result = await submit()
 
       if (result.success) {
-        setVoteCount((prev) => prev + 1)
-        setHasVoted(true)
         toast({
           title: "Vote submitted!",
           description: "Thank you for supporting Digital Tap!",
@@ -69,25 +46,25 @@ export default function VoteButton() {
         variant: "destructive",
       })
     } finally {
-      setIsLoading(false)
+      setIsSubmitting(false)
     }
   }
 
   return (
     <Button
       onClick={handleVote}
-      disabled={isLoading || hasVoted}
+      disabled={isLoading || isSubmitting || hasVoted}
       className={`flex items-center space-x-2 ${
         hasVoted ? "bg-green-600 hover:bg-green-700" : "bg-red-500 hover:bg-red-600"
       } text-white`}
     >
-      {isLoading ? (
+      {isSubmitting ? (
         <Loader2 className="h-4 w-4 animate-spin" />
       ) : (
         <Heart className={`h-4 w-4 ${hasVoted ? "fill-current" : ""}`} />
       )}
       <span>
-        {hasVoted ? "Voted!" : "Vote for Digital Tap"} ({voteCount.toLocaleString()})
+        {hasVoted ? "Voted!" : "Vote for Digital Tap"} ({totalVotes.toLocaleString()})
       </span>
     </Button>
   )

@@ -65,8 +65,8 @@ export default function Privacy() {
           <h3 className="text-xl font-semibold mt-6 mb-3">4.1 Where We Store Data</h3>
           <p>Your data is stored using:</p>
           <ul className="list-disc pl-6 mb-4">
-            <li><strong>Supabase:</strong> Database for user submissions, votes, and journey data</li>
-            <li><strong>Supabase Storage:</strong> Cloud storage for uploaded images</li>
+            <li><strong>Convex:</strong> Database for user submissions, votes, and journey data</li>
+            <li><strong>Convex Storage:</strong> Cloud storage for uploaded images</li>
             <li><strong>Resend:</strong> Email service for contact form deliveries</li>
           </ul>
 
@@ -133,7 +133,7 @@ export default function Privacy() {
           <h2 className="text-2xl font-bold mt-8 mb-4">8. Third-Party Services</h2>
           <p>The Service uses the following third-party services, each with their own privacy policies:</p>
           <ul className="list-disc pl-6 mb-4">
-            <li><strong>Supabase:</strong> <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a></li>
+            <li><strong>Convex:</strong> <a href="https://www.convex.dev/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a></li>
             <li><strong>Resend:</strong> <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a></li>
             <li><strong>Netlify:</strong> <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a></li>
           </ul>

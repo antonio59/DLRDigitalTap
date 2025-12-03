@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { ConvexClientProvider } from "@/components/convex-provider"
 import { Toaster } from "@/components/ui/toaster"
 import StructuredData from "./structured-data";
 import SiteFooter from "@/components/site-footer"
@@ -11,14 +12,17 @@ import SiteFooter from "@/components/site-footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Digital Tap - Revolutionary Contactless Travel",
+  title: "London Digital Tap - Revolutionary Contactless Travel",
   description:
-    "Experience the future of DLR travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys across London's Docklands Light Railway.",
+    "Experience the future of London travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys across London's transport network.",
   keywords: [
+    "London Digital Tap",
+    "TfL Digital Tap",
+    "Pink Validator",
+    "Interchange Stations",
     "DLR",
-    "Docklands Light Railway",
-    "DLR Tap",
-    "DLR Contactless",
+    "Elizabeth Line",
+    "London Overground",
     "Digital Tap",
     "Transport for London",
     "TfL Innovation",
@@ -27,35 +31,33 @@ export const metadata: Metadata = {
     "Smart Travel",
     "Contactless Journey",
     "Oyster Card Alternative",
-    "DLR Delays",
-    "DLR Status",
     "London Underground",
     "Tube Map",
   ],
-  authors: [{ name: "Digital Tap Team" }],
-  creator: "Digital Tap",
-  publisher: "Digital Tap",
+  authors: [{ name: "London Digital Tap Team" }],
+  creator: "London Digital Tap",
+  publisher: "London Digital Tap",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://dlrdigitaltap.xyz"),
+  metadataBase: new URL("https://londondigitaltap.xyz"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Digital Tap - Revolutionary Contactless Travel",
+    title: "London Digital Tap - Revolutionary Contactless Travel",
     description:
-      "Experience the future of DLR travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
-    url: "https://dlrdigitaltap.xyz",
-    siteName: "Digital Tap",
+      "Experience the future of London travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
+    url: "https://londondigitaltap.xyz",
+    siteName: "London Digital Tap",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Digital Tap - Revolutionary Contactless Travel",
+        alt: "London Digital Tap - Revolutionary Contactless Travel",
       },
     ],
     locale: "en_GB",
@@ -63,12 +65,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Tap - Revolutionary Contactless Travel",
+    title: "London Digital Tap - Revolutionary Contactless Travel",
     description:
-      "Experience the future of DLR travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
+      "Experience the future of London travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
     images: ["/twitter-image.png"],
-    creator: "@dlrdigitaltap",
-    site: "@dlrdigitaltap",
+    creator: "@londondigitaltap",
+    site: "@londondigitaltap",
   },
   robots: {
     index: true,
@@ -105,13 +107,15 @@ export default function RootLayout({
           data-website-id="bd7e8714-0165-4646-a110-34611e2abacb"
           strategy="afterInteractive"
         />
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
-          <div className="min-h-screen bg-white flex flex-col">
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-          <Toaster />
-        </ThemeProvider>
+        <ConvexClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
+            <div className="min-h-screen bg-white flex flex-col">
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
+            <Toaster />
+          </ThemeProvider>
+        </ConvexClientProvider>
       </body>
     </html>
   )

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { getTotalVotes, getComments } from "@/actions/database";
+import { convexServer } from "@/lib/convex-server";
+import { api } from "@/convex/_generated/api";
 
 export const dynamic = "force-dynamic";
 
@@ -15,10 +16,12 @@ export async function GET(request: Request) {
       );
     }
 
-    const [totalVotes, comments] = await Promise.all([
-      getTotalVotes(),
-      getComments(),
+    const [votesResult, commentsResult] = await Promise.all([
+      convexServer.query(api.votes.getTotal, {}),
+      convexServer.query(api.comments.list, { limit: 100 }),
     ]);
+
+    const comments = commentsResult.comments || [];
 
     const now = new Date();
     const campaignStart = new Date("2024-01-01");
@@ -26,24 +29,23 @@ export async function GET(request: Request) {
       (now.getTime() - campaignStart.getTime()) / (1000 * 60 * 60 * 24)
     );
 
-    const recentComments = comments
-      .filter((c) => {
-        const commentDate = new Date(c.created_at);
-        const daysSince = Math.floor(
-          (now.getTime() - commentDate.getTime()) / (1000 * 60 * 60 * 24)
-        );
-        return daysSince <= 30;
-      });
+    const recentComments = comments.filter((c: any) => {
+      const commentDate = new Date(c.created_at);
+      const daysSince = Math.floor(
+        (now.getTime() - commentDate.getTime()) / (1000 * 60 * 60 * 24)
+      );
+      return daysSince <= 30;
+    });
 
     const stats = {
-      totalVotes,
+      totalVotes: votesResult.count || 0,
       totalComments: comments.length,
       recentComments: recentComments.length,
       daysSinceLaunch,
       lastUpdated: now.toISOString(),
       topComments: comments
         .slice(0, 5)
-        .map((c) => ({
+        .map((c: any) => ({
           name: c.name,
           comment: c.comment,
           date: c.created_at,

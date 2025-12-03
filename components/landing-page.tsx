@@ -29,11 +29,11 @@ export default function LandingPage() {
             </Badge>
             <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="block">Help Us Bring</span>
-              <span className="block text-cyan-100 mt-2">Digital Tap to the DLR</span>
+              <span className="block text-cyan-100 mt-2">Digital Tap to London</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-cyan-50 max-w-2xl lg:max-w-3xl">
               This is a <span className="font-semibold text-white">citizen-led campaign</span> proposing seamless, 
-              contactless travel technology for the DLR network. See how it could work and support the idea.
+              contactless travel technology for London's transport network, including the DLR, interchange stations, and beyond.
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <VoteButton />
@@ -74,7 +74,7 @@ export default function LandingPage() {
               Current Pain Points with Physical Tap Systems
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              The current physical tap-in/tap-out system creates several issues for DLR passengers
+              The current physical tap-in/tap-out system creates several issues for London passengers
             </p>
           </div>
 
@@ -207,7 +207,7 @@ export default function LandingPage() {
                   <div className="ml-4">
                     <h4 className="text-lg font-semibold text-gray-900 mb-2">Automatic Detection</h4>
                     <p className="text-gray-600">
-                      Your phone automatically detects when you enter and exit DLR stations using Bluetooth beacon technology. 
+                      Your phone automatically detects when you enter and exit stations using Bluetooth beacon technology. 
                       No manual tapping required.
                     </p>
                   </div>
@@ -476,7 +476,7 @@ export default function LandingPage() {
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-gray-900">Network-Wide Implementation</h3>
                     <p className="mt-2 text-base text-gray-500">
-                      Designed to work across the entire DLR network with potential expansion to other TfL services.
+                      Designed to work across all TfL services including DLR, Underground, Overground, and Elizabeth line.
                     </p>
                   </div>
                 </div>
@@ -500,7 +500,7 @@ export default function LandingPage() {
               Who Would Benefit Most?
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Digital tap would make a real difference for many DLR passengers
+              Digital tap would make a real difference for many London passengers
             </p>
           </div>
 
@@ -615,7 +615,7 @@ export default function LandingPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">
-                  Each DLR station would have Bluetooth beacons that communicate with your smartphone. 
+                  Each station would have Bluetooth beacons that communicate with your smartphone. 
                   When you enter a station, your phone automatically registers the tap-in. When you leave, it registers the tap-out.
                 </p>
                 <p className="text-gray-600">
@@ -656,7 +656,7 @@ export default function LandingPage() {
                   Your phone is likely already using Bluetooth for other features.
                 </p>
                 <p className="text-gray-600">
-                  The app runs in the background and only activates when near a DLR station, 
+                  The app runs in the background and only activates when near a TfL station, 
                   further minimizing battery usage.
                 </p>
               </CardContent>
@@ -787,7 +787,7 @@ export default function LandingPage() {
             <span className="block">Support This Campaign</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-blue-100">
-            Join our ongoing campaign to bring digital tap to the DLR. Every vote matters and strengthens our case to TfL.
+            Join our ongoing campaign to bring digital tap to London's transport network. Every vote matters and strengthens our case to TfL.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <VoteButton />
