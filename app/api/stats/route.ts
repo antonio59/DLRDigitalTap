@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { convexServer } from "@/lib/convex-server";
+import { getConvexServer } from "@/lib/convex-server";
 import { api } from "@/convex/_generated/api";
 
 export const dynamic = "force-dynamic";
@@ -16,6 +16,7 @@ export async function GET(request: Request) {
       );
     }
 
+    const convexServer = getConvexServer();
     const [votesResult, commentsResult] = await Promise.all([
       convexServer.query(api.votes.getTotal, {}),
       convexServer.query(api.comments.list, { limit: 100 }),
