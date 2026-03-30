@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 
 - Add automatic changelog workflow
 - Add automatic changelog workflow
+- Add automatic changelog workflow
 - Bump actions/checkout from 4 to 6
 - Bump actions/checkout from 4 to 5 (#1)
 - Remove dependency-review workflow (requires GitHub Advanced Security)
