@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file.
 ### CI/CD
 
 - Add automatic changelog workflow
+- Add automatic changelog workflow
 - Bump actions/checkout from 4 to 6
 - Bump actions/checkout from 4 to 5 (#1)
 - Remove dependency-review workflow (requires GitHub Advanced Security)
@@ -71,6 +72,7 @@ ci: bump actions/checkout from 4 to 6
 ### Chores
 
 - Add git-cliff config for changelog generation
+- Add git-cliff config for changelog generation
 - Update Netlify config to use bun
 - Migrate from pnpm to bun package manager
 - Update dependencies and fix security issues
@@ -80,6 +82,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update 'Who I Am' section with full name and details
 - Update campaign roadmap to reflect ongoing strategy
 - Add comprehensive improvement session summary
