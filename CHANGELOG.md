@@ -30,6 +30,18 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- Merge pull request #36 from antonio59/dependabot/npm_and_yarn/radix-ui/react-toggle-group-1.1.11
+
+deps(deps): bump @radix-ui/react-toggle-group from 1.1.1 to 1.1.11
+- **deps**: Bump @radix-ui/react-toggle-group from 1.1.1 to 1.1.11
+- Merge pull request #35 from antonio59/dependabot/npm_and_yarn/radix-ui/react-menubar-1.1.16
+
+deps(deps): bump @radix-ui/react-menubar from 1.1.4 to 1.1.16
+- **deps**: Bump @radix-ui/react-menubar from 1.1.4 to 1.1.16
+- Merge pull request #31 from antonio59/dependabot/npm_and_yarn/cmdk-1.1.1
+
+deps(deps): bump cmdk from 1.0.4 to 1.1.1
+- **deps**: Bump cmdk from 1.0.4 to 1.1.1
 - Add convex and remove supabase dependency
 - Merge pull request #34 from antonio59/dependabot/npm_and_yarn/radix-ui/react-dropdown-menu-2.1.16
 
@@ -84,6 +96,8 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update 'Who I Am' section with full name and details
