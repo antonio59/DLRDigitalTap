@@ -30,6 +30,10 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- Merge pull request #38 from antonio59/dependabot/npm_and_yarn/radix-ui/react-collapsible-1.1.12
+
+deps(deps): bump @radix-ui/react-collapsible from 1.1.2 to 1.1.12
+- **deps**: Bump @radix-ui/react-collapsible from 1.1.2 to 1.1.12
 - Merge pull request #36 from antonio59/dependabot/npm_and_yarn/radix-ui/react-toggle-group-1.1.11
 
 deps(deps): bump @radix-ui/react-toggle-group from 1.1.1 to 1.1.11
@@ -84,6 +88,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Chores
 
+- Upgrade all dependencies to latest versions
 - Add git-cliff config for changelog generation
 - Add git-cliff config for changelog generation
 - Add git-cliff config for changelog generation
@@ -96,6 +101,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
