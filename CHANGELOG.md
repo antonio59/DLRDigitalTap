@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- Re-enable CodeQL workflow trigger
 - Pin Bun to v1.3.5 to fix lockfile mismatch with --frozen-lockfile
 - Make SARIF upload non-blocking when Code Scanning is disabled
 - Add OSV Scanner workflow for dependency vulnerability scanning
@@ -106,6 +107,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
