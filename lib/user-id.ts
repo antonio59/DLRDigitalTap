@@ -3,7 +3,9 @@ const USER_ID_KEY = "ldt_user_id"
 
 function generateUserId(): string {
   const timestamp = Date.now()
-  const randomPart = Math.random().toString(36).substring(2, 15)
+  const array = new Uint8Array(8)
+  crypto.getRandomValues(array)
+  const randomPart = Array.from(array, (b) => b.toString(16).padStart(2, "0")).join("")
   return `user_${timestamp}_${randomPart}`
 }
 
