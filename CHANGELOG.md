@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+- CI lint failure, insecure randomness, unused import, 18 security vulnerabilities
 - Regenerate bun.lock and remove stale package-lock.json
 - Use placeholder Convex URL during build to avoid SSR errors
 - Lazy-load Convex client to avoid build-time env errors
@@ -104,6 +105,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
