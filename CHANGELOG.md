@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- Add OSV Scanner workflow for dependency vulnerability scanning
 - Add automatic changelog workflow
 - Add automatic changelog workflow
 - Add automatic changelog workflow
@@ -102,6 +103,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
