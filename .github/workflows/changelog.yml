@@ -37,5 +37,11 @@ jobs:
           git add CHANGELOG.md
           git diff --staged --quiet && echo "No changes to commit" && exit 0
           git commit -m "docs: update changelog [skip ci]"
-          git pull --rebase origin ${{ github.ref_name }}
-          git push
+          # Handle race condition: if push rejected, rebase and retry; if conflict, abort gracefully
+          git push || (
+            git pull --rebase --autostash origin ${{ github.ref_name }} && git push
+          ) || (
+            echo "Merge conflict during rebase, aborting gracefully"
+            git rebase --abort 2>/dev/null || true
+            exit 0
+          )
