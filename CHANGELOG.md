@@ -101,8 +101,8 @@ ci: bump actions/checkout from 4 to 6
 - Add git-cliff config for changelog generation
 - Add git-cliff config for changelog generation
 - Add git-cliff config for changelog generation
-- Update Netlify config to use bun
-- Migrate from pnpm to bun package manager
+- Update Netlify config to use bun (later reverted to pnpm)
+- Migrate from pnpm to bun package manager (later reverted to pnpm)
 - Update dependencies and fix security issues
 - Add Terms and Privacy links in footer
 - Remove plugin entry; rely on Netlify UI plugin

@@ -42,7 +42,7 @@ Enhances the comments table with additional features:
 
 ### Option 2: Using the Migration Script
 \`\`\`bash
-npm run migrate
+pnpm run migrate
 \`\`\`
 
 ## Migration Order
