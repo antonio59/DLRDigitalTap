@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+- Correct pnpm typo in corepack workflow
 - Use corepack instead of pnpm/action-setup for v11 compatibility
 - Remove --frozen-lockfile for pnpm v11 compatibility
 - Migrate CI from npm/bun to pnpm
@@ -101,6 +102,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Chores
 
+- Remove keep-supabase-alive workflow (no longer using supabase)
 - Migrate to pnpm v11
 - Upgrade all dependencies to latest versions
 - Add git-cliff config for changelog generation
@@ -115,6 +117,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
