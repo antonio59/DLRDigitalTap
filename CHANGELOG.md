@@ -107,6 +107,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Chores
 
+- **deps**: Remove unused dependencies
 - **deps**: Update eslint-config-next 16.2.6, react-day-picker 10.0.0, osv-scanner 2.3.8
 - Remove keep-supabase-alive workflow (no longer using supabase)
 - Migrate to pnpm v11
@@ -123,6 +124,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
