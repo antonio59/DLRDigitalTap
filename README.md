@@ -67,7 +67,7 @@ Your project is live at:
 1. Push this repository to GitHub
 2. In Netlify, choose **New site → Import from Git** and select the repo
 3. Set the environment variables shown above
-4. Netlify detects `netlify.toml` and builds with `pnpm build`
+4. Netlify detects `netlify.toml` and builds with `pnpm build` (using the `@netlify/next` runtime plugin)
 
 The site will deploy at `https://<your-subdomain>.netlify.app`.
 

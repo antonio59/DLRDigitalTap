@@ -1,10 +1,7 @@
 # Netlify configuration for Next.js project
 
 [build]
-  command = "bun run build"
+  command = "pnpm build"
   publish = ".next"
-
-[build.environment]
-  BUN_VERSION = "1"
 
 # Netlify will automatically apply the "Next.js" Runtime plugin when linked through the UI.

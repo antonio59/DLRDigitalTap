@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+- Correct pnpm typo in corepack workflow
+- Use corepack instead of pnpm/action-setup for v11 compatibility
+- Remove --frozen-lockfile for pnpm v11 compatibility
+- Migrate CI from npm/bun to pnpm
+- Correct pnpm-workspace.yaml format for v11
 - CI lint failure, insecure randomness, unused import, 18 security vulnerabilities
 - Regenerate bun.lock and remove stale package-lock.json
 - Use placeholder Convex URL during build to avoid SSR errors
@@ -20,6 +25,9 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- Bump pnpm/action-setup from 4 to 6 (#51)
+- Bump actions/checkout from 4 to 6 (#45)
+- Re-enable CodeQL workflow trigger
 - Pin Bun to v1.3.5 to fix lockfile mismatch with --frozen-lockfile
 - Make SARIF upload non-blocking when Code Scanning is disabled
 - Add OSV Scanner workflow for dependency vulnerability scanning
@@ -35,6 +43,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- Migrate to pnpm
 - Merge pull request #38 from antonio59/dependabot/npm_and_yarn/radix-ui/react-collapsible-1.1.12
 
 deps(deps): bump @radix-ui/react-collapsible from 1.1.2 to 1.1.12
@@ -93,6 +102,8 @@ ci: bump actions/checkout from 4 to 6
 
 ### Chores
 
+- Remove keep-supabase-alive workflow (no longer using supabase)
+- Migrate to pnpm v11
 - Upgrade all dependencies to latest versions
 - Add git-cliff config for changelog generation
 - Add git-cliff config for changelog generation
@@ -106,6 +117,17 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
+- Update changelog [skip ci]
+- Update changelog [skip ci]
+- Update changelog [skip ci]
+- Update changelog [skip ci]
+- Update changelog [skip ci]
+- Update npm/bun references to pnpm
+- Update changelog [skip ci]
+- Update changelog [skip ci]
+- Update changelog [skip ci]
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]

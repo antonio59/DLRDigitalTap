@@ -1,0 +1,16 @@
+packages:
+  - .
+
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+
+pnpm:
+  overrides:
+    postcss: ^8.5.10
+  allowBuilds:
+    esbuild: true
+    sharp: true
+    unrs-resolver: true
+  packageImportMethod: clone-or-copy
