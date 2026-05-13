@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+- Migrate CI from npm/bun to pnpm
 - Correct pnpm-workspace.yaml format for v11
 - CI lint failure, insecure randomness, unused import, 18 security vulnerabilities
 - Regenerate bun.lock and remove stale package-lock.json
@@ -112,6 +113,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update npm/bun references to pnpm
