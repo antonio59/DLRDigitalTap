@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- **codeql**: Remove duplicate typescript language entry
 - Bump pnpm/action-setup from 4 to 6 (#51)
 - Bump actions/checkout from 4 to 6 (#45)
 - Re-enable CodeQL workflow trigger
@@ -121,6 +122,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
