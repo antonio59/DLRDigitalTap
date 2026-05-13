@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- Upgrade actions/setup-node v4 -> v6
 - **codeql**: Remove duplicate typescript language entry
 - Bump pnpm/action-setup from 4 to 6 (#51)
 - Bump actions/checkout from 4 to 6 (#45)
@@ -122,6 +123,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
