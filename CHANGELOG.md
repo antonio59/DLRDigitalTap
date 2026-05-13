@@ -97,6 +97,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Chores
 
+- Migrate to pnpm v11
 - Upgrade all dependencies to latest versions
 - Add git-cliff config for changelog generation
 - Add git-cliff config for changelog generation
@@ -110,6 +111,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update npm/bun references to pnpm
 - Update changelog [skip ci]
 - Update changelog [skip ci]
