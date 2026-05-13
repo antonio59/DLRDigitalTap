@@ -43,7 +43,9 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- Merge origin/main and fix package manager + build issues
 - Migrate to pnpm
+- Migrate tailwindcss 3→4, eslint 8→9, typescript 5→6, next 15→16
 - Merge pull request #38 from antonio59/dependabot/npm_and_yarn/radix-ui/react-collapsible-1.1.12
 
 deps(deps): bump @radix-ui/react-collapsible from 1.1.2 to 1.1.12
@@ -117,6 +119,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
