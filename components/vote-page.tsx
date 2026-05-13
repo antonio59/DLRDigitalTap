@@ -312,6 +312,7 @@ export default function VotePage() {
                 <div className="mt-2">
                   {imagePreview ? (
                     <div className="relative inline-block">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={imagePreview}
                         alt="Preview"
@@ -375,6 +376,7 @@ export default function VotePage() {
                       <p className="mt-2 text-gray-600">{comment.comment}</p>
                       {comment.image_url && (
                         <div className="mt-3">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={comment.image_url || "/placeholder.svg"}
                             alt="Comment attachment"
