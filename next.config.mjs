@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Next 16.3 writes AGENTS.md / CLAUDE.md during `next dev` unless disabled.
+  agentRules: false,
   turbopack: {
     root: process.cwd(),
   },
