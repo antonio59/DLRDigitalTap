@@ -46,6 +46,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump convex from 1.38.0 to 1.39.1 (#66)
 - Merge origin/main and fix package manager + build issues
 - Migrate to pnpm
 - Migrate tailwindcss 3→4, eslint 8→9, typescript 5→6, next 15→16
@@ -124,6 +125,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
