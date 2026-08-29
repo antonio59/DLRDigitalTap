@@ -47,6 +47,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump react-resizable-panels from 4.11.0 to 4.12.3 (#72)
 - **deps**: Bump resend from 6.12.3 to 6.12.4 (#79)
 - **deps**: Bump react-hook-form from 7.75.0 to 7.77.0 (#78)
 - **deps**: Bump lucide-react from 1.14.0 to 1.17.0 (#75)
@@ -131,6 +132,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
