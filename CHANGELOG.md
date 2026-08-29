@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- Bump google/osv-scanner-action from 2.3.8 to 2.5.0 (#82)
 - Upgrade actions/setup-node v4 -> v6
 - **codeql**: Remove duplicate typescript language entry
 - Bump pnpm/action-setup from 4 to 6 (#51)
@@ -46,6 +47,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump resend from 6.12.3 to 6.12.4 (#79)
+- **deps**: Bump react-hook-form from 7.75.0 to 7.77.0 (#78)
 - **deps**: Bump lucide-react from 1.14.0 to 1.17.0 (#75)
 - **deps-dev**: Bump @types/node from 25.7.0 to 25.9.1 (#74)
 - **deps**: Bump react-day-picker from 10.0.0 to 10.0.1 (#69)
@@ -128,6 +131,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
