@@ -46,6 +46,9 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump lucide-react from 1.14.0 to 1.17.0 (#75)
+- **deps-dev**: Bump @types/node from 25.7.0 to 25.9.1 (#74)
+- **deps**: Bump react-day-picker from 10.0.0 to 10.0.1 (#69)
 - **deps**: Bump convex from 1.38.0 to 1.39.1 (#66)
 - Merge origin/main and fix package manager + build issues
 - Migrate to pnpm
@@ -125,6 +128,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
