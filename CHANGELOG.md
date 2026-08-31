@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- Bump google/osv-scanner-action from 2.5.0 to 2.5.1 (#85)
 - Bump google/osv-scanner-action from 2.3.8 to 2.5.0 (#82)
 - Upgrade actions/setup-node v4 -> v6
 - **codeql**: Remove duplicate typescript language entry
@@ -133,6 +134,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
