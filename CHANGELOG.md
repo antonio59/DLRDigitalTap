@@ -49,6 +49,9 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump convex from 1.39.1 to 1.45.0 (#87)
+- **deps**: Bump resend from 6.12.4 to 6.24.0 (#89)
+- **deps-dev**: Bump tailwindcss from 4.3.0 to 4.3.3 (#90)
 - **deps**: Bump @radix-ui/react-collapsible from 1.1.12 to 1.1.20 (#91)
 - **deps**: Bump react-resizable-panels from 4.11.0 to 4.12.3 (#72)
 - **deps**: Bump resend from 6.12.3 to 6.12.4 (#79)
@@ -135,6 +138,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
