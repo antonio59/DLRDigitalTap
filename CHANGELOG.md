@@ -49,6 +49,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump @radix-ui/react-slider from 1.3.6 to 1.4.7 (#86)
+- **deps**: Bump @radix-ui/react-popover from 1.1.15 to 1.1.23 (#88)
 - **deps**: Bump convex from 1.39.1 to 1.45.0 (#87)
 - **deps**: Bump resend from 6.12.4 to 6.24.0 (#89)
 - **deps-dev**: Bump tailwindcss from 4.3.0 to 4.3.3 (#90)
@@ -138,6 +140,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
