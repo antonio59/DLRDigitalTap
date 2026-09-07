@@ -49,6 +49,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump @radix-ui/react-dropdown-menu from 2.1.16 to 2.1.24 (#93)
 - **deps**: Bump input-otp from 1.4.2 to 1.5.0 (#92)
 - **deps**: Bump @radix-ui/react-select from 2.2.6 to 2.3.7 (#84)
 - **deps**: Bump @radix-ui/react-slider from 1.3.6 to 1.4.7 (#86)
@@ -142,6 +143,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
