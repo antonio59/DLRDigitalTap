@@ -50,6 +50,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump react and @types/react (#96)
 - **deps**: Bump lucide-react from 1.17.0 to 1.41.0 (#97)
 - **deps**: Bump sonner from 2.0.7 to 2.0.8 (#99)
 - **deps**: Bump @radix-ui/react-aspect-ratio from 1.1.8 to 1.1.15 (#98)
