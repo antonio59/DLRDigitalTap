@@ -49,6 +49,10 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump sonner from 2.0.7 to 2.0.8 (#99)
+- **deps**: Bump @radix-ui/react-aspect-ratio from 1.1.8 to 1.1.15 (#98)
+- **deps-dev**: Bump @tailwindcss/postcss from 4.3.0 to 4.3.3 (#95)
+- **deps**: Bump @radix-ui/react-switch from 1.2.6 to 1.3.7 (#94)
 - **deps**: Bump @radix-ui/react-dropdown-menu from 2.1.16 to 2.1.24 (#93)
 - **deps**: Bump input-otp from 1.4.2 to 1.5.0 (#92)
 - **deps**: Bump @radix-ui/react-select from 2.2.6 to 2.3.7 (#84)
@@ -143,6 +147,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
