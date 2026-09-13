@@ -3,4 +3,8 @@
   "name": "dlr-digital-tap",
   "pages_build_output_dir": "out",
   "compatibility_date": "2026-09-13",
+  "vars": {
+    // Public value — also inlined into the client bundle at build time.
+    "NEXT_PUBLIC_CONVEX_URL": "https://tidy-weasel-450.convex.cloud",
+  },
 }
