@@ -2,7 +2,7 @@
 
 Citizen campaign site and click-through prototype for a **touchless DLR tap-in / tap-out** concept. Built for TfL and the public to understand the idea. It is **not** an official TfL product and does not process real journeys or payments.
 
-Stack: **Next.js**, **Convex**, **Tailwind**, **Resend**. Hosted on **Cloudflare Workers** via OpenNext.
+Stack: **Next.js** (static export), **Convex**, **Tailwind**, **Resend** (REST API). Hosted on **Cloudflare Pages**, with Pages Functions in `functions/` for the admin login, stats API, contact form and the Umami analytics proxy.
 
 ## Features
 
@@ -26,9 +26,9 @@ Fill in Convex, Resend, and admin values. Then:
 pnpm dev
 ```
 
-## Cloudflare
+## Cloudflare Pages
 
-Local Next.js stays `pnpm dev`. Preview in the Workers runtime:
+Local Next.js stays `pnpm dev`. Preview the exported site plus Pages Functions locally:
 
 ```bash
 pnpm preview
@@ -40,17 +40,16 @@ Deploy:
 pnpm deploy
 ```
 
-Set Worker secrets (not committed):
+`wrangler.jsonc` points Pages at the `out/` export. Set the secrets and env vars on the Pages project (not committed):
 
 ```bash
-npx wrangler secret put NEXT_PUBLIC_CONVEX_URL
-npx wrangler secret put RESEND_API_KEY
-npx wrangler secret put CONTACT_TO_EMAIL
-npx wrangler secret put ADMIN_PASSWORD
-npx wrangler secret put ADMIN_API_KEY
+npx wrangler pages secret put RESEND_API_KEY
+npx wrangler pages secret put CONTACT_TO_EMAIL
+npx wrangler pages secret put ADMIN_PASSWORD
+npx wrangler pages secret put ADMIN_API_KEY
 ```
 
-`wrangler.jsonc` is the deploy config. `netlify.toml` has been removed.
+`NEXT_PUBLIC_CONVEX_URL` is needed both at build time (client bundle) and as a Pages env var for the stats Function — set it under **Pages → Settings → Environment variables**. For `wrangler pages dev`, copy values into `.dev.vars` (gitignored).
 
 ## License
 

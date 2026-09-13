@@ -34,9 +34,9 @@ jobs:
 
       - name: Check build output
         run: |
-          if [ -d ".next" ]; then
-            echo "Build successful - .next directory created"
+          if [ -d "out" ]; then
+            echo "Build successful - out directory created"
           else
-            echo "Build failed - .next directory not found"
+            echo "Build failed - out directory not found"
             exit 1
           fi

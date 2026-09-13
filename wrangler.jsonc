@@ -1,21 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "dlr-digital-tap",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2026-09-07",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS",
-  },
-  "observability": {
-    "enabled": true,
-    "head_sampling_rate": 1,
-  },
-  "services": [
-    {
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "dlr-digital-tap",
-    },
-  ],
+  "pages_build_output_dir": "out",
+  "compatibility_date": "2026-09-13",
 }

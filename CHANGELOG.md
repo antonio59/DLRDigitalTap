@@ -54,6 +54,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- Switch hosting target to Cloudflare Pages: static export to `out/` plus Pages Functions for admin login, stats, contact form and the Umami proxy
+- Replace the Resend SDK with a direct REST call from the contact Pages Function
 - Migrate hosting from Netlify to Cloudflare Workers via OpenNext
 - Remove Supabase leftovers: SQL migrations, keep-alive workflow, stale env vars
 - Remove unused shadcn/ui components, npm dependencies, hooks and placeholder assets

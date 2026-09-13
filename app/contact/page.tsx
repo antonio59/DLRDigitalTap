@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Send, Loader2, MessageSquare } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { sendContactEmail } from "@/actions/email"
 import PrototypeBanner from "@/components/prototype-banner"
 import SiteHeader from "@/components/site-header"
 
@@ -51,9 +50,10 @@ export default function ContactPage() {
       formDataObj.append("subject", formData.subject.trim() || "Contact Form Submission")
       formDataObj.append("message", formData.message.trim())
 
-      const result = await sendContactEmail(formDataObj)
+      const response = await fetch("/api/contact", { method: "POST", body: formDataObj })
+      const result = (await response.json()) as { success: boolean; error?: string }
 
-      if (result.success) {
+      if (response.ok && result.success) {
         toast({
           title: "Message sent!",
           description: "Thank you for your message. We'll get back to you soon!",
