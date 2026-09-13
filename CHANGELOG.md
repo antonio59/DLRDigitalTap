@@ -28,6 +28,8 @@ All notable changes to this project will be documented in this file.
 
 ### CI/CD
 
+- Bump actions/checkout from 6 to 7
+- Bump actions/setup-node from 4 to 7
 - Bump google/osv-scanner-action from 2.5.0 to 2.5.1 (#85)
 - Bump google/osv-scanner-action from 2.3.8 to 2.5.0 (#82)
 - Upgrade actions/setup-node v4 -> v6
@@ -50,6 +52,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- Merge pull request #80 from antonio59/dependabot/github_actions/actions/checkout-7
+
+ci: bump actions/checkout from 6 to 7
+- Merge pull request #81 from antonio59/dependabot/github_actions/actions/setup-node-7
+
+ci: bump actions/setup-node from 4 to 7
 - **deps**: Bump react and @types/react (#96)
 - **deps**: Bump lucide-react from 1.17.0 to 1.41.0 (#97)
 - **deps**: Bump sonner from 2.0.7 to 2.0.8 (#99)
@@ -150,6 +158,8 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
