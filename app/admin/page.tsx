@@ -40,6 +40,15 @@ export default function AdminDashboard() {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
 
+  useEffect(() => {
+    fetch("/api/stats", { credentials: "include" }).then(async (response) => {
+      if (response.ok) {
+        setIsAuthenticated(true);
+        setStats(await response.json());
+      }
+    });
+  }, []);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 

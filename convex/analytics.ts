@@ -9,11 +9,28 @@ export const track = mutation({
     metadata: v.optional(v.any()),
   },
   handler: async (ctx, args) => {
+    if (
+      args.eventType.length > 64 ||
+      args.page.length > 256 ||
+      (args.userId !== undefined && args.userId.length > 128)
+    ) {
+      return { success: false, error: "Invalid event" }
+    }
+
+    let metadata = args.metadata
+    if (metadata !== undefined) {
+      try {
+        if (JSON.stringify(metadata).length > 4096) metadata = undefined
+      } catch {
+        metadata = undefined
+      }
+    }
+
     await ctx.db.insert("analytics", {
       eventType: args.eventType,
       page: args.page,
       userId: args.userId,
-      metadata: args.metadata,
+      metadata,
     })
 
     return { success: true }

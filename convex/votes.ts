@@ -7,6 +7,10 @@ export const submit = mutation({
     feedback: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
+    if (args.feedback !== undefined && args.feedback.length > 500) {
+      return { success: false, error: "Feedback must be 500 characters or fewer" }
+    }
+
     // Check if user has already voted
     const existingVote = await ctx.db
       .query("votes")

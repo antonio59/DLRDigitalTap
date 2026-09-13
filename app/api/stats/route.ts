@@ -2,20 +2,19 @@ import { NextResponse } from "next/server"
 import { cookies } from "next/headers"
 import { getConvexServer } from "@/lib/convex-server"
 import { api } from "@/convex/_generated/api"
+import { safeCompare, verifySessionToken } from "@/lib/admin-session"
 
 export const dynamic = "force-dynamic"
 
 function isAuthorised(request: Request, cookieValue?: string): boolean {
   const apiKey = process.env.ADMIN_API_KEY
-  const adminPassword = process.env.ADMIN_PASSWORD
   const authHeader = request.headers.get("authorization")
 
-  if (apiKey && authHeader === `Bearer ${apiKey}`) {
+  if (apiKey && authHeader?.startsWith("Bearer ") && safeCompare(authHeader.slice(7), apiKey)) {
     return true
   }
 
-  const expectedCookie = apiKey ?? adminPassword
-  return Boolean(expectedCookie && cookieValue && cookieValue === expectedCookie)
+  return verifySessionToken(cookieValue)
 }
 
 export async function GET(request: Request) {
