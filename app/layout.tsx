@@ -12,31 +12,18 @@ import SiteFooter from "@/components/site-footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "London Digital Tap - Revolutionary Contactless Travel",
+  title: "Digital Tap — a citizen proposal for touchless DLR travel",
   description:
-    "Experience the future of London travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys across London's transport network.",
+    "A concept campaign asking TfL to consider beacon-based tap-in and tap-out on the DLR. Demo only. Not an official TfL service.",
   keywords: [
-    "London Digital Tap",
-    "TfL Digital Tap",
-    "Pink Validator",
-    "Interchange Stations",
-    "DLR",
-    "Elizabeth Line",
-    "London Overground",
     "Digital Tap",
+    "DLR",
     "Transport for London",
-    "TfL Innovation",
-    "London Commuter",
-    "Public Transport App",
-    "Smart Travel",
-    "Contactless Journey",
-    "Oyster Card Alternative",
-    "London Underground",
-    "Tube Map",
+    "touchless travel",
+    "pink validator",
   ],
-  authors: [{ name: "London Digital Tap Team" }],
-  creator: "London Digital Tap",
-  publisher: "London Digital Tap",
+  authors: [{ name: "Antonio Smith" }],
+  creator: "Antonio Smith",
   formatDetection: {
     email: false,
     address: false,
@@ -47,17 +34,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "London Digital Tap - Revolutionary Contactless Travel",
+    title: "Digital Tap — a citizen proposal for touchless DLR travel",
     description:
-      "Experience the future of London travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
+      "A concept campaign asking TfL to consider beacon-based tap-in and tap-out on the DLR. Demo only.",
     url: "https://londondigitaltap.xyz",
-    siteName: "London Digital Tap",
+    siteName: "Digital Tap",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "London Digital Tap - Revolutionary Contactless Travel",
+        alt: "Digital Tap campaign concept for DLR travel",
       },
     ],
     locale: "en_GB",
@@ -65,30 +52,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "London Digital Tap - Revolutionary Contactless Travel",
+    title: "Digital Tap — a citizen proposal for touchless DLR travel",
     description:
-      "Experience the future of London travel with our innovative Digital Tap system. No more crowded tap points, just seamless contactless journeys.",
+      "A concept campaign asking TfL to consider beacon-based tap-in and tap-out on the DLR.",
     images: ["/twitter-image.png"],
-    creator: "@londondigitaltap",
-    site: "@londondigitaltap",
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
-  },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

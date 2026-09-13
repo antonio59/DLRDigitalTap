@@ -12,70 +12,7 @@ import { useToast } from "@/hooks/use-toast"
 import { useAnalytics } from "@/hooks/use-analytics"
 import PrototypeBanner from "./prototype-banner"
 import DisclaimerFooter from "./disclaimer-footer"
-
-// Pink card reader interchange stations
-const INTERCHANGE_STATIONS = [
-  { name: "Blackhorse Road", lines: ["Victoria line", "London Overground"] },
-  { name: "Canada Water", lines: ["Jubilee line", "London Overground"] },
-  { name: "Clapham Junction", lines: ["National Rail", "London Overground"] },
-  { name: "Ealing Broadway", lines: ["Central line", "District line", "Elizabeth line", "National Rail"] },
-  { name: "Gospel Oak", lines: ["London Overground"] },
-  { name: "Gunnersbury", lines: ["District line", "London Overground"] },
-  { name: "Hackney Central", lines: ["London Overground"] },
-  { name: "Hackney Downs", lines: ["London Overground", "National Rail"] },
-  { name: "Highbury & Islington", lines: ["Victoria line", "London Overground"] },
-  { name: "Kensington (Olympia)", lines: ["District line", "London Overground"] },
-  { name: "Rayners Lane", lines: ["Metropolitan line", "Piccadilly line"] },
-  { name: "Richmond", lines: ["District line", "London Overground", "National Rail"] },
-  { name: "Stratford", lines: ["Central line", "Jubilee line", "Elizabeth line", "DLR", "London Overground", "National Rail"] },
-  { name: "Surrey Quays", lines: ["London Overground"] },
-  { name: "West Brompton", lines: ["District line", "London Overground"] },
-  { name: "Whitechapel", lines: ["District line", "Hammersmith & City line", "Elizabeth line", "London Overground"] },
-  { name: "Willesden Junction", lines: ["Bakerloo line", "London Overground"] },
-  { name: "Wimbledon", lines: ["District line", "National Rail", "Tramlink"] },
-]
-
-const DLR_STATIONS = [
-  "Abbey Road DLR Station",
-  "All Saints DLR Station",
-  "Bank DLR Station",
-  "Beckton DLR Station",
-  "Beckton Park DLR Station",
-  "Blackwall DLR Station",
-  "Bow Church DLR Station",
-  "Canning Town DLR Station",
-  "Canary Wharf DLR Station",
-  "Custom House (for ExCel) DLR Station",
-  "Cutty Sark (for Maritime Greenwich) DLR Station",
-  "Cyprus DLR Station",
-  "Deptford Bridge DLR Station",
-  "Devons Road DLR Station",
-  "Elverson Road DLR Station",
-  "East India DLR Station",
-  "Gallions Reach DLR Station",
-  "Greenwich DLR Station",
-  "Heron Quays DLR Station",
-  "Island Gardens DLR Station",
-  "King George V DLR Station",
-  "Langdon Park DLR Station",
-  "Lewisham DLR Station",
-  "Limehouse DLR Station",
-  "Mudchute DLR Station",
-  "Pudding Mill Lane DLR Station",
-  "Poplar DLR Station",
-  "Prince Regent DLR Station",
-  "Pontoon Dock DLR Station",
-  "Royal Albert DLR Station",
-  "Royal Victoria DLR Station",
-  "Shadwell DLR Station",
-  "South Quay DLR Station",
-  "Stratford DLR Station",
-  "Tower Gateway DLR Station",
-  "West India Quay DLR Station",
-  "Westferry DLR Station",
-  "West Silvertown DLR Station",
-  "Woolwich Arsenal DLR Station",
-]
+import { DLR_STATIONS, INTERCHANGE_STATIONS, estimateDlrFare } from "@/lib/stations"
 
 export default function DigitalTap() {
   const [mode, setMode] = useState<"dlr" | "interchange">("dlr")
@@ -148,14 +85,7 @@ export default function DigitalTap() {
       return
     }
 
-    // Calculate fare based on journey (simplified calculation)
-    const baseFare = 2.8
-    // Use deterministic calculation based on stations instead of random
-    const stationIndex1 = DLR_STATIONS.indexOf(fromStation)
-    const stationIndex2 = DLR_STATIONS.indexOf(toStation)
-    const distance = Math.abs(stationIndex2 - stationIndex1)
-    const distanceFactor = Math.min(distance * 0.5 + 1, 3) // 1-3x multiplier based on distance
-    const calculatedFare = Math.round(baseFare * distanceFactor * 100) / 100
+    const calculatedFare = estimateDlrFare(fromStation, toStation)
 
     setFare(calculatedFare)
     setCurrentStep("complete")
@@ -226,7 +156,7 @@ export default function DigitalTap() {
   }
 
   const getAvailableDestinations = () => {
-    return DLR_STATIONS.filter((station) => station !== fromStation)
+    return DLR_STATIONS.filter((station) => station.name !== fromStation)
   }
 
   return (
@@ -496,8 +426,8 @@ export default function DigitalTap() {
                   </SelectTrigger>
                   <SelectContent>
                     {DLR_STATIONS.map((station) => (
-                      <SelectItem key={station} value={station}>
-                        {station}
+                      <SelectItem key={station.name} value={station.name}>
+                        {station.name}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -558,8 +488,8 @@ export default function DigitalTap() {
                   </SelectTrigger>
                   <SelectContent>
                     {getAvailableDestinations().map((station) => (
-                      <SelectItem key={station} value={station}>
-                        {station}
+                      <SelectItem key={station.name} value={station.name}>
+                        {station.name}
                       </SelectItem>
                     ))}
                   </SelectContent>

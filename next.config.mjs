@@ -1,12 +1,11 @@
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare"
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Next 16.3 writes AGENTS.md / CLAUDE.md during `next dev` unless disabled.
   agentRules: false,
   turbopack: {
     root: process.cwd(),
-  },
-  typescript: {
-    ignoreBuildErrors: true,
   },
   images: {
     unoptimized: true,
@@ -26,3 +25,5 @@ const nextConfig = {
 }
 
 export default nextConfig
+
+initOpenNextCloudflareForDev()

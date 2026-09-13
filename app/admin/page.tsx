@@ -40,12 +40,17 @@ export default function AdminDashboard() {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const correctPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "dlr2024admin";
-    
-    if (password === correctPassword) {
+
+    const response = await fetch("/api/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ password }),
+    });
+
+    if (response.ok) {
       setIsAuthenticated(true);
       fetchStats();
     } else {
@@ -61,9 +66,7 @@ export default function AdminDashboard() {
     setIsLoading(true);
     try {
       const response = await fetch("/api/stats", {
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_ADMIN_API_KEY || "your-secret-api-key"}`,
-        },
+        credentials: "include",
       });
 
       if (!response.ok) {
@@ -104,7 +107,7 @@ export default function AdminDashboard() {
 
 🎯 Day ${stats.daysSinceLaunch} of our ongoing campaign to bring modern travel technology to the DLR.
 
-Every voice matters. Join the movement: https://dlrdigitaltap.netlify.app
+Every voice matters. Join the movement: https://londondigitaltap.xyz
 
 @TfL @MayorofLondon #DLR #London #PublicTransport #Innovation`;
   };

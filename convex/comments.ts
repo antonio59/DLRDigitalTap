@@ -9,6 +9,13 @@ export const submit = mutation({
     imageStorageId: v.optional(v.id("_storage")),
   },
   handler: async (ctx, args) => {
+    if (args.name.trim().length < 1 || args.name.length > 80) {
+      return { success: false, error: "Name must be 1-80 characters" }
+    }
+    if (args.comment.trim().length < 3 || args.comment.length > 1000) {
+      return { success: false, error: "Comment must be 3-1000 characters" }
+    }
+
     let imageUrl: string | undefined
 
     if (args.imageStorageId) {

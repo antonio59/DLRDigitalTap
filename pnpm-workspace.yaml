@@ -5,6 +5,7 @@ allowBuilds:
   esbuild: true
   sharp: true
   unrs-resolver: true
+  workerd: true
 
 # pnpm applies these; top-level package.json "overrides" is npm-only.
 # Keep majors that already exist in the tree (do not force 1.x -> 5.x).

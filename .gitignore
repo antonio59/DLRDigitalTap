@@ -143,3 +143,8 @@ temp/
 
 # Netlify
 .netlify
+
+# Cloudflare / OpenNext
+.open-next
+.wrangler
+.dev.vars
