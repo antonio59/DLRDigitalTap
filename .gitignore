@@ -148,3 +148,6 @@ temp/
 .open-next
 .wrangler
 .dev.vars
+
+# pnpm local store
+.pnpm-store

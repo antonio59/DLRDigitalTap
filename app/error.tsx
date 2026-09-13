@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertTriangle, Home, RefreshCw } from "lucide-react"
@@ -12,6 +13,8 @@ export default function Error({
   error: Error & { digest?: string }
   reset?: () => void
 }) {
+  const router = useRouter()
+
   useEffect(() => {
     console.error("Application error:", error)
   }, [error])
@@ -31,12 +34,7 @@ export default function Error({
   }
 
   const handleGoHome = () => {
-    try {
-      window.location.href = "/"
-    } catch (err) {
-      console.error("Error navigating home:", err)
-      window.location.reload()
-    }
+    router.push("/")
   }
 
   return (
