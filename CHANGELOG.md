@@ -52,6 +52,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump @radix-ui/react-alert-dialog from 1.1.15 to 1.1.23 (#101)
 - Merge pull request #80 from antonio59/dependabot/github_actions/actions/checkout-7
 
 ci: bump actions/checkout from 6 to 7
@@ -158,6 +159,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
