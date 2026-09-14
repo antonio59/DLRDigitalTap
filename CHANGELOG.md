@@ -5,8 +5,8 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
-- Restore Tailwind v4 utility output in globals.css (site shipped unstyled CSS since the v3→v4 migration)
-- Resolve ESLint flat-config plugin resolution and ignore generated build output
+- Restore Tailwind v4 utility output and clean up lint config
+- **security**: Sign admin session cookies and add security headers
 - **security**: Bump browserslist to 4.28.9 for Dependabot highs (#100)
 - **security**: Patch high-severity Next.js and transitive npm CVEs (#83)
 - **security**: Correct pnpm-workspace.yaml override syntax for postcss
@@ -54,13 +54,6 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
-- Switch hosting target to Cloudflare Pages: static export to `out/` plus Pages Functions for admin login, stats, contact form and the Umami proxy
-- Replace the Resend SDK with a direct REST call from the contact Pages Function
-- Migrate hosting from Netlify to Cloudflare Workers via OpenNext
-- Remove Supabase leftovers: SQL migrations, keep-alive workflow, stale env vars
-- Remove unused shadcn/ui components, npm dependencies, hooks and placeholder assets
-- Remove stale session docs (improvement summary, open PRs summary, gh auth guide)
-- Restore admin dashboard session from existing cookie on page load
 - **deps**: Bump react and @types/react (#104)
 - **deps**: Bump lucide-react from 1.41.0 to 1.44.0 (#109)
 - **deps**: Bump @radix-ui/react-scroll-area from 1.2.10 to 1.2.18 (#108)
@@ -158,6 +151,8 @@ ci: bump actions/checkout from 4 to 6
 
 ### Chores
 
+- **deps**: Regenerate lockfile after rebase
+- Set NEXT_PUBLIC_CONVEX_URL as a Pages env var
 - **deps**: Remove unused dependencies
 - **deps**: Update eslint-config-next 16.2.6, react-day-picker 10.0.0, osv-scanner 2.3.8
 - Remove keep-supabase-alive workflow (no longer using supabase)
@@ -175,6 +170,8 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
@@ -232,6 +229,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Features
 
+- Migrate hosting to Cloudflare Workers via OpenNext
 - Proxy umami script to bypass ad blockers
 - Add umami analytics script
 - Add social media feed and fix metadata
@@ -249,6 +247,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Refactoring
 
+- Host on Cloudflare Pages with static export + Pages Functions
 - Migrate from Supabase to Convex
 - Rebrand to Digital Tap and remove n8n workflow
 - Standardize navigation and fix routing architecture
@@ -256,10 +255,6 @@ ci: bump actions/checkout from 4 to 6
 
 ### Security
 
-- Store HMAC-signed session token in admin cookie instead of the raw credential
-- Use timing-safe comparisons for admin password, API key and session token
-- Add security headers (CSP, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy)
-- Bound public Convex mutation inputs (vote feedback length, analytics event sizes)
 - Fix insecure randomness and unused variable
 
 ### Styling
