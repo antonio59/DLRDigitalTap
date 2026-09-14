@@ -52,6 +52,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump react and @types/react (#104)
 - **deps**: Bump lucide-react from 1.41.0 to 1.44.0 (#109)
 - **deps**: Bump @radix-ui/react-scroll-area from 1.2.10 to 1.2.18 (#108)
 - **deps**: Bump @radix-ui/react-hover-card from 1.1.15 to 1.1.23 (#107)
@@ -165,6 +166,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
