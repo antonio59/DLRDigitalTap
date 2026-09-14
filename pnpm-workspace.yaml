@@ -17,3 +17,5 @@ overrides:
   brace-expansion@5: 5.0.9
   ws@8: 8.21.3
   browserslist: ^4.28.7
+  baseline-browser-mapping: ^2.11.0
+  '@babel/core': ^7.29.6
