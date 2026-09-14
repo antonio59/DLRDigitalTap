@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+- **security**: Override baseline-browser-mapping and @babel/core to patched versions
 - Restore Tailwind v4 utility output and clean up lint config
 - **security**: Sign admin session cookies and add security headers
 - **security**: Bump browserslist to 4.28.9 for Dependabot highs (#100)
@@ -170,6 +171,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog
 - Update changelog [skip ci]
 - Update changelog [skip ci]
