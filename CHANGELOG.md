@@ -52,6 +52,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changes
 
+- **deps**: Bump @radix-ui/react-separator from 1.1.8 to 1.1.15 (#105)
+- **deps**: Bump @radix-ui/react-slot from 1.2.4 to 1.3.3 (#103)
 - **deps**: Bump @radix-ui/react-context-menu from 2.2.16 to 2.3.7 (#102)
 - **deps**: Bump @radix-ui/react-alert-dialog from 1.1.15 to 1.1.23 (#101)
 - Merge pull request #80 from antonio59/dependabot/github_actions/actions/checkout-7
@@ -160,6 +162,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
