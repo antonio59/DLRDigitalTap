@@ -46,7 +46,6 @@ pnpm deploy
 npx wrangler pages secret put RESEND_API_KEY
 npx wrangler pages secret put CONTACT_TO_EMAIL
 npx wrangler pages secret put ADMIN_PASSWORD
-npx wrangler pages secret put ADMIN_API_KEY
 ```
 
 `NEXT_PUBLIC_CONVEX_URL` is needed both at build time (client bundle) and as a Pages env var for the stats Function — set it under **Pages → Settings → Environment variables**. For `wrangler pages dev`, copy values into `.dev.vars` (gitignored).

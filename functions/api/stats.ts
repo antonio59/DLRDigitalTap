@@ -3,10 +3,6 @@ import { getCookie, verifySessionToken } from "../_lib/admin"
 import { convexQuery, type ConvexComment } from "../_lib/convex"
 
 async function isAuthorised({ request, env }: FunctionContext): Promise<boolean> {
-  const authHeader = request.headers.get("Authorization")
-  if (env.ADMIN_API_KEY && authHeader === `Bearer ${env.ADMIN_API_KEY}`) {
-    return true
-  }
   return verifySessionToken(env, getCookie(request, "admin_session"))
 }
 

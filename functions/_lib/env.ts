@@ -1,6 +1,5 @@
 export interface Env {
   ADMIN_PASSWORD?: string
-  ADMIN_API_KEY?: string
   NEXT_PUBLIC_CONVEX_URL?: string
   RESEND_API_KEY?: string
   CONTACT_TO_EMAIL?: string

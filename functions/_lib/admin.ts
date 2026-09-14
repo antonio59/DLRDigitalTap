@@ -4,7 +4,7 @@ const SESSION_PAYLOAD = "dlr-digital-tap:admin-session:v1"
 const encoder = new TextEncoder()
 
 function secret(env: Env): string | undefined {
-  return env.ADMIN_API_KEY ?? env.ADMIN_PASSWORD
+  return env.ADMIN_PASSWORD
 }
 
 async function hmacHex(key: string, message: string): Promise<string> {

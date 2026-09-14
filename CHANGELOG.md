@@ -257,6 +257,8 @@ ci: bump actions/checkout from 4 to 6
 
 ### Security
 
+- Remove n8n Bearer-token access to /api/stats (cookie session only)
+- Add RFC 9116 security.txt contact file
 - Fix insecure randomness and unused variable
 
 ### Styling
