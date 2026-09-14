@@ -172,6 +172,7 @@ ci: bump actions/checkout from 4 to 6
 ### Documentation
 
 - Update changelog [skip ci]
+- Update changelog [skip ci]
 - Update changelog
 - Update changelog [skip ci]
 - Update changelog [skip ci]
@@ -231,6 +232,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Features
 
+- **security**: Add security.txt and drop n8n Bearer access
 - Migrate hosting to Cloudflare Workers via OpenNext
 - Proxy umami script to bypass ad blockers
 - Add umami analytics script
@@ -257,8 +259,6 @@ ci: bump actions/checkout from 4 to 6
 
 ### Security
 
-- Remove n8n Bearer-token access to /api/stats (cookie session only)
-- Add RFC 9116 security.txt contact file
 - Fix insecure randomness and unused variable
 
 ### Styling
