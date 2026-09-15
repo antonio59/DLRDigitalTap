@@ -1,12 +1,11 @@
 "use client"
 
-import { useMutation, useQuery } from "convex/react"
+import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { getUserId } from "@/lib/user-id"
 
 export function useAnalytics() {
   const trackMutation = useMutation(api.analytics.track)
-  const analyticsQuery = useQuery(api.analytics.list, { limit: 1000 })
 
   const track = async (eventType: string, page: string, metadata?: any) => {
     const userId = getUserId()
@@ -25,9 +24,5 @@ export function useAnalytics() {
     }
   }
 
-  return {
-    track,
-    analytics: analyticsQuery?.analytics ?? [],
-    isLoading: analyticsQuery === undefined,
-  }
+  return { track }
 }

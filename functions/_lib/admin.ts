@@ -1,10 +1,14 @@
 import type { Env } from "./env"
 
 const SESSION_PAYLOAD = "dlr-digital-tap:admin-session:v1"
+const SESSION_TTL_MS = 12 * 60 * 60 * 1000
 const encoder = new TextEncoder()
 
+// SESSION_SECRET is a dedicated high-entropy HMAC key so a captured token is
+// not an offline oracle for the interactive password. ADMIN_PASSWORD is the
+// fallback for deployments that haven't set it yet.
 function secret(env: Env): string | undefined {
-  return env.ADMIN_PASSWORD
+  return env.SESSION_SECRET ?? env.ADMIN_PASSWORD
 }
 
 async function hmacHex(key: string, message: string): Promise<string> {
@@ -19,7 +23,7 @@ async function hmacHex(key: string, message: string): Promise<string> {
   return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("")
 }
 
-async function sha256Hex(value: string): Promise<string> {
+export async function sha256Hex(value: string): Promise<string> {
   const digest = await crypto.subtle.digest("SHA-256", encoder.encode(value))
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("")
 }
@@ -39,15 +43,24 @@ export async function verifyAdminPassword(env: Env, candidate: string | undefine
   return safeCompare(a, b)
 }
 
-/** Stateless session token: HMAC of a fixed payload, keyed by the admin secret. */
+/** Session token: "<expiryMs>.<HMAC(payload:expiry)>" — expiry is enforced
+ *  server-side in verifySessionToken, so a token cannot outlive its window. */
 export async function createSessionToken(env: Env): Promise<string> {
-  return hmacHex(secret(env)!, SESSION_PAYLOAD)
+  const exp = (Date.now() + SESSION_TTL_MS).toString()
+  const sig = await hmacHex(secret(env)!, `${SESSION_PAYLOAD}:${exp}`)
+  return `${exp}.${sig}`
 }
 
 export async function verifySessionToken(env: Env, token: string | undefined): Promise<boolean> {
   const s = secret(env)
   if (!s || !token) return false
-  return safeCompare(token, await hmacHex(s, SESSION_PAYLOAD))
+  const dot = token.indexOf(".")
+  if (dot <= 0) return false
+  const exp = token.slice(0, dot)
+  const sig = token.slice(dot + 1)
+  const expMs = Number(exp)
+  if (!Number.isFinite(expMs) || expMs < Date.now()) return false
+  return safeCompare(sig, await hmacHex(s, `${SESSION_PAYLOAD}:${exp}`))
 }
 
 export function getCookie(request: Request, name: string): string | undefined {

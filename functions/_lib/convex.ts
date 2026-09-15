@@ -5,6 +5,7 @@ interface ConvexQueryResponse<T> {
 }
 
 export interface ConvexComment {
+  id: string
   name: string
   comment: string
   created_at: string
@@ -28,6 +29,28 @@ export async function convexQuery<T>(
   const body = (await response.json()) as ConvexQueryResponse<T>
   if (body.status !== "success") {
     throw new Error(`Convex query ${path} failed: ${body.errorMessage ?? body.status}`)
+  }
+  return body.value as T
+}
+
+export async function convexMutation<T>(
+  convexUrl: string,
+  path: string,
+  args: Record<string, unknown> = {},
+): Promise<T> {
+  const response = await fetch(`${convexUrl}/api/mutation`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ path, args, format: "json" }),
+  })
+
+  if (!response.ok) {
+    throw new Error(`Convex mutation ${path} failed: ${response.status}`)
+  }
+
+  const body = (await response.json()) as ConvexQueryResponse<T>
+  if (body.status !== "success") {
+    throw new Error(`Convex mutation ${path} failed: ${body.errorMessage ?? body.status}`)
   }
   return body.value as T
 }

@@ -39,6 +39,7 @@ export async function onRequestGet(context: FunctionContext): Promise<Response> 
       daysSinceLaunch,
       lastUpdated: now.toISOString(),
       topComments: comments.slice(0, 5).map((c) => ({
+        id: c.id,
         name: c.name,
         comment: c.comment,
         date: c.created_at,

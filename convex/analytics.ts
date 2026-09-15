@@ -1,5 +1,12 @@
 import { v } from "convex/values"
-import { mutation, query } from "./_generated/server"
+import { internalQuery, mutation } from "./_generated/server"
+
+const ALLOWED_EVENT_TYPES = new Set([
+  "prototype_view",
+  "prototype_tap_in",
+  "prototype_tap_out",
+  "prototype_interchange",
+])
 
 export const track = mutation({
   args: {
@@ -10,7 +17,7 @@ export const track = mutation({
   },
   handler: async (ctx, args) => {
     if (
-      args.eventType.length > 64 ||
+      !ALLOWED_EVENT_TYPES.has(args.eventType) ||
       args.page.length > 256 ||
       (args.userId !== undefined && args.userId.length > 128)
     ) {
@@ -37,12 +44,15 @@ export const track = mutation({
   },
 })
 
-export const list = query({
+// Internal-only: visitor telemetry (pseudonymous user_id + per-event metadata)
+// must not be anonymously enumerable. Operator access goes through the Convex
+// dashboard or an internal caller.
+export const list = internalQuery({
   args: {
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    const limit = args.limit ?? 1000
+    const limit = Math.min(Math.max(args.limit ?? 100, 1), 500)
     const analytics = await ctx.db
       .query("analytics")
       .order("desc")

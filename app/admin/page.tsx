@@ -26,6 +26,7 @@ interface Stats {
   daysSinceLaunch: number;
   lastUpdated: string;
   topComments: Array<{
+    id: string;
     name: string;
     comment: string;
     date: string;
@@ -48,6 +49,33 @@ export default function AdminDashboard() {
       }
     });
   }, []);
+
+  const handleLogout = async () => {
+    await fetch("/api/admin/logout", { method: "POST", credentials: "include" });
+    setIsAuthenticated(false);
+    setStats(null);
+    setPassword("");
+  };
+
+  const deleteComment = async (commentId: string) => {
+    const response = await fetch("/api/admin/comments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ commentId }),
+    });
+
+    if (response.ok) {
+      toast({ title: "Comment deleted" });
+      fetchStats();
+    } else {
+      toast({
+        title: "Error",
+        description: "Failed to delete comment.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -180,14 +208,19 @@ Every voice matters. Join the movement: https://londondigitaltap.xyz
                 Last updated: {stats ? new Date(stats.lastUpdated).toLocaleString("en-GB") : "—"}
               </p>
             </div>
-            <Button
-              onClick={fetchStats}
-              disabled={isLoading}
-              className="bg-cyan-600 hover:bg-cyan-700"
-            >
-              <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? "animate-spin" : ""}`} />
-              Refresh
-            </Button>
+            <div className="flex gap-2">
+              <Button
+                onClick={fetchStats}
+                disabled={isLoading}
+                className="bg-cyan-600 hover:bg-cyan-700"
+              >
+                <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? "animate-spin" : ""}`} />
+                Refresh
+              </Button>
+              <Button variant="outline" onClick={handleLogout}>
+                Log out
+              </Button>
+            </div>
           </div>
 
           {/* Stats Grid */}
@@ -296,13 +329,22 @@ Every voice matters. Join the movement: https://londondigitaltap.xyz
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {stats.topComments.map((comment, idx) => (
-                    <div key={idx} className="border-b border-gray-200 pb-4 last:border-0">
+                  {stats.topComments.map((comment) => (
+                    <div key={comment.id} className="border-b border-gray-200 pb-4 last:border-0">
                       <div className="flex justify-between items-start mb-2">
                         <p className="font-semibold text-gray-900">{comment.name}</p>
-                        <span className="text-xs text-gray-500">
-                          {new Date(comment.date).toLocaleDateString("en-GB")}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-gray-500">
+                            {new Date(comment.date).toLocaleDateString("en-GB")}
+                          </span>
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={() => deleteComment(comment.id)}
+                          >
+                            Delete
+                          </Button>
+                        </div>
                       </div>
                       <p className="text-gray-600 text-sm">{comment.comment}</p>
                     </div>

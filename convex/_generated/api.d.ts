@@ -1,4 +1,4 @@
- 
+/* eslint-disable */
 /**
  * Generated `api` utility.
  *
@@ -10,6 +10,10 @@
 
 import type * as analytics from "../analytics.js";
 import type * as comments from "../comments.js";
+import type * as crons from "../crons.js";
+import type * as lifecycle from "../lifecycle.js";
+import type * as rateLimit from "../rateLimit.js";
+import type * as tokens from "../tokens.js";
 import type * as votes from "../votes.js";
 
 import type {
@@ -21,6 +25,10 @@ import type {
 declare const fullApi: ApiFromModules<{
   analytics: typeof analytics;
   comments: typeof comments;
+  crons: typeof crons;
+  lifecycle: typeof lifecycle;
+  rateLimit: typeof rateLimit;
+  tokens: typeof tokens;
   votes: typeof votes;
 }>;
 

@@ -3,7 +3,7 @@ import { mutation, query } from "./_generated/server"
 
 export const submit = mutation({
   args: {
-    userId: v.string(),
+    tokenId: v.id("voterTokens"),
     feedback: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
@@ -11,10 +11,21 @@ export const submit = mutation({
       return { success: false, error: "Feedback must be 500 characters or fewer" }
     }
 
-    // Check if user has already voted
+    // The token is a server-minted, rate-limited capability: it must exist,
+    // be unused, and is consumed here so it can only ever record one vote.
+    const token = await ctx.db.get(args.tokenId)
+    if (!token || token.used) {
+      return { success: false, error: "Invalid or already used token" }
+    }
+    await ctx.db.patch(args.tokenId, { used: true })
+
+    // userId stores the token id — dedupe via the by_user index stays intact
+    // and hasUserVoted still works for the legitimate client.
+    const userId = String(args.tokenId)
+
     const existingVote = await ctx.db
       .query("votes")
-      .withIndex("by_user", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user", (q) => q.eq("userId", userId))
       .first()
 
     if (existingVote) {
@@ -22,7 +33,7 @@ export const submit = mutation({
     }
 
     await ctx.db.insert("votes", {
-      userId: args.userId,
+      userId,
       feedback: args.feedback,
     })
 

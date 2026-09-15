@@ -1,4 +1,9 @@
 import { json, type FunctionContext } from "../_lib/env"
+import { sha256Hex } from "../_lib/admin"
+import { convexMutation } from "../_lib/convex"
+
+const CONTACT_RATE_LIMIT = 5
+const CONTACT_WINDOW_MS = 24 * 60 * 60 * 1000
 
 function escapeHtml(value: string): string {
   return value
@@ -29,13 +34,39 @@ export async function onRequestPost({ request, env }: FunctionContext): Promise<
       !isValidEmail(email) ||
       name.length > 120 ||
       message.length > 4000 ||
-      subject.length > 200
+      subject.length > 200 ||
+      // Reject header-injection characters in fields that reach email headers.
+      /[\r\n]/.test(subject) ||
+      /[\r\n]/.test(name)
     ) {
       return json({ success: false, error: "Invalid form input" }, 400)
     }
 
     if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL) {
       return json({ success: false, error: "Contact inbox is not configured" }, 503)
+    }
+
+    // Bound anonymous submissions before the paid send: max 5 per source IP
+    // per day, tracked server-side in Convex.
+    if (env.NEXT_PUBLIC_CONVEX_URL) {
+      const ip = request.headers.get("CF-Connecting-IP") ?? "anonymous"
+      const key = `contact:${await sha256Hex(ip)}`
+      try {
+        const rl = await convexMutation<{ allowed: boolean }>(
+          env.NEXT_PUBLIC_CONVEX_URL,
+          "rateLimit:consume",
+          { key, limit: CONTACT_RATE_LIMIT, windowMs: CONTACT_WINDOW_MS },
+        )
+        if (!rl.allowed) {
+          return json(
+            { success: false, error: "Too many messages. Please try again tomorrow." },
+            429,
+          )
+        }
+      } catch (error) {
+        console.error("Rate limit check failed:", error)
+        return json({ success: false, error: "Service unavailable" }, 503)
+      }
     }
 
     const emailSubject = subject || "New Contact Form Submission"

@@ -261,6 +261,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Security
 
+- Address security-audit findings: server-issued rate-limited action tokens for votes/comments/uploads (replaces self-asserted localStorage userId dedupe), make analytics:list internal-only and allowlist analytics:track event types, require token + provenance check + image metadata validation for storage uploads, add admin comment moderation and GDPR erasure mutation, cron sweep for orphaned uploads, expiring admin session tokens keyed by dedicated SESSION_SECRET, admin logout endpoint, per-IP rate limiting and CRLF rejection on /api/contact, SHA-256 integrity pinning for the proxied /script.js
 - Fix insecure randomness and unused variable
 
 ### Styling
