@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
+- **security**: Remediate audit findings at the backend trust boundary
 - **security**: Override baseline-browser-mapping and @babel/core to patched versions
 - Restore Tailwind v4 utility output and clean up lint config
 - **security**: Sign admin session cookies and add security headers
@@ -175,6 +176,7 @@ ci: bump actions/checkout from 4 to 6
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
+- Update changelog [skip ci]
 - Update changelog
 - Update changelog [skip ci]
 - Update changelog [skip ci]
@@ -261,7 +263,6 @@ ci: bump actions/checkout from 4 to 6
 
 ### Security
 
-- Address security-audit findings: server-issued rate-limited action tokens for votes/comments/uploads (replaces self-asserted localStorage userId dedupe), make analytics:list internal-only and allowlist analytics:track event types, require token + provenance check + image metadata validation for storage uploads, add admin comment moderation and GDPR erasure mutation, cron sweep for orphaned uploads, expiring admin session tokens keyed by dedicated SESSION_SECRET, admin logout endpoint, per-IP rate limiting and CRLF rejection on /api/contact, SHA-256 integrity pinning for the proxied /script.js
 - Fix insecure randomness and unused variable
 
 ### Styling
