@@ -152,6 +152,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Chores
 
+- Adopt cloudflare/security-audit skill
 - **deps**: Regenerate lockfile after rebase
 - Set NEXT_PUBLIC_CONVEX_URL as a Pages env var
 - **deps**: Remove unused dependencies
@@ -171,6 +172,7 @@ ci: bump actions/checkout from 4 to 6
 
 ### Documentation
 
+- Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog [skip ci]
 - Update changelog
